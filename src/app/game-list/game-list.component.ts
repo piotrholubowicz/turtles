@@ -14,7 +14,6 @@ import { Game } from '../game';
 })
 export class GameListComponent implements OnInit {
   games$: Observable<Game[]>;
-  selectedId: string;
 
   constructor(
     private service: GameService,
@@ -24,7 +23,6 @@ export class GameListComponent implements OnInit {
   ngOnInit() {
     this.games$ = this.route.paramMap.pipe(
       switchMap(params => {
-        this.selectedId = params.get('id');
         return this.service.getGames();
       })
     );

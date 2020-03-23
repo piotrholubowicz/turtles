@@ -1,6 +1,10 @@
 export enum Color {
-  RED,
   BLUE,
+  GREEN,
+  PURPLE,
+  RED,
+  YELLOW,
+  LAST
 }
 
 export enum Direction {

@@ -14,7 +14,14 @@ export const GAMES: Game[] = [
     ]),
     deck: [],
     discarded: [],
-    board: [],
+    board: [
+      [],
+      [Color.RED, Color.GREEN],
+      [],
+      [Color.PURPLE, Color.YELLOW, Color.BLUE],
+      [],
+      []
+    ],
     active_player: 0,
   },
 ]

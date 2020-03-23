@@ -5,14 +5,13 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { HelloComponent } from './hello.component';
 import { GameService } from './game.service';
 import { GameListComponent } from './game-list/game-list.component';
 import { BoardComponent } from './board/board.component';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, AppRoutingModule ],
-  declarations: [ AppComponent, HelloComponent, GameListComponent, BoardComponent ],
+  declarations: [ AppComponent, GameListComponent, BoardComponent ],
   bootstrap:    [ AppComponent ],
   providers: [GameService]
 })

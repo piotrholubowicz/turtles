@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+
+import { Game, Color } from '../game';
+import { GameService } from '../game.service';
 
 @Component({
   selector: 'app-board',
@@ -6,10 +13,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./board.component.css']
 })
 export class BoardComponent implements OnInit {
+  game$: Observable<Game>;
+  Color = Color;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private service: GameService,
+  ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.game$ = this.route.paramMap.pipe(
+      switchMap((params: ParamMap) =>
+        this.service.getGame(params.get('id')))
+    );
   }
-
 }

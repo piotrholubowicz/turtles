@@ -1,3 +1,9 @@
+<div *ngIf="game$ | async as game">
 <p>
-board for {{ id }} works!
+board for <b>{{ game.id }}</b> works!
 </p>
+
+  <p *ngFor="let field of game.board">
+      [ <span *ngFor="let color of field"> {{ Color[color] }}</span> ]
+  </p>
+</div>
