@@ -19,7 +19,7 @@ export interface Card {
 }
 
 export interface Game {
-  id: string;
+  id: number;
   players: string[];
   colors: Map<string, Color>;
   hands: Map<string, Card[]>;

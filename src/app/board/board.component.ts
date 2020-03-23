@@ -24,7 +24,7 @@ export class BoardComponent implements OnInit {
   ngOnInit(): void {
     this.game$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
-        this.service.getGame(params.get('id')))
+        this.service.getGame(+params.get('id')))
     );
   }
 }

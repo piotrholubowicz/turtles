@@ -17,7 +17,7 @@ export class GameService {
     return of(GAMES);
   }
 
-  getGame(id: string) {
+  getGame(id: number) {
     return this.getGames().pipe(
       map((games: Game[]) => games.find(game => game.id === id))
     );

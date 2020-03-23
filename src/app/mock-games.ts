@@ -2,7 +2,7 @@ import { Game, Color } from './game';
 
 export const GAMES: Game[] = [
   {
-    id: "foo",
+    id: 234,
     players: ["Filip", "Sebastian"],
     colors: new Map([
       ["Filip", Color.RED],
