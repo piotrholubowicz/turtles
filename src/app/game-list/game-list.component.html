@@ -1,0 +1,10 @@
+<p>Games:</p>
+
+<ul class="heroes">
+  <li *ngFor="let game of games$ | async"
+    [class.selected]="game.id === selectedId">
+    <a [routerLink]="['/game', game.id]">
+      <span class="badge">{{ game.id }}</span>{{ game.id }}
+    </a>
+  </li>
+</ul>
