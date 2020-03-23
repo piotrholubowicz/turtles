@@ -14,7 +14,7 @@ export interface Card {
   color: Color;
 }
 
-export class Game {
+export interface Game {
   id: string;
   players: string[];
   colors: Map<string, Color>;
