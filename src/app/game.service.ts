@@ -28,7 +28,7 @@ export class GameService {
       );
   }
 
-  /** GET hero by id. Will 404 if id not found */
+  /** GET gameby id. Will 404 if id not found */
   getGame(id: number): Observable<Game> {
     const url = `${this.gamesUrl}/${id}`;
     return this.http.get<Game>(url).pipe(
@@ -39,29 +39,29 @@ export class GameService {
 
   //////// Save methods //////////
 
-  /** POST: add a new hero to the server */
-  addHero (hero: Game): Observable<Game> {
+  /** POST: add a new gameto the server */
+  addGame(hero: Game): Observable<Game> {
     return this.http.post<Game>(this.gamesUrl, hero, this.httpOptions).pipe(
-      tap((newHero: Game) => console.log(`added hero w/ id=${newHero.id}`)),
+      tap((newHero: Game) => console.log(`added game w/ id=${newHero.id}`)),
       catchError(this.handleError<Game>('addHero'))
     );
   }
 
-  /** DELETE: delete the hero from the server */
-  deleteHero (hero: Game | number): Observable<Game> {
-    const id = typeof hero === 'number' ? hero : hero.id;
+  /** DELETE: delete the gamefrom the server */
+  deleteGame(game: Game | number): Observable<Game> {
+    const id = typeof game=== 'number' ? game: game.id;
     const url = `${this.gamesUrl}/${id}`;
 
     return this.http.delete<Game>(url, this.httpOptions).pipe(
-      tap(_ => console.log(`deleted hero id=${id}`)),
+      tap(_ => console.log(`deleted gameid=${id}`)),
       catchError(this.handleError<Game>('deleteHero'))
     );
   }
 
-  /** PUT: update the hero on the server */
-  updateHero (hero: Game): Observable<any> {
+  /** PUT: update the gameon the server */
+  updateGame(hero: Game): Observable<any> {
     return this.http.put(this.gamesUrl, hero, this.httpOptions).pipe(
-      tap(_ => console.log(`updated hero id=${hero.id}`)),
+      tap(_ => console.log(`updated gameid=${hero.id}`)),
       catchError(this.handleError<any>('updateHero'))
     );
   }
