@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 import { Component, OnInit, Input } from '@angular/core';
@@ -14,8 +14,7 @@ import { GameService } from '../game.service';
 })
 export class PlayerComponent implements OnInit {
   game$: Observable<Game>;
-  player$: Observable<string>;
-  Color = Color;
+  player: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,12 +23,15 @@ export class PlayerComponent implements OnInit {
 
   ngOnInit(): void {
     this.game$ = this.route.paramMap.pipe(
-      switchMap((params: ParamMap) =>
-        this.service.getGame(+params.get('id')))
+      switchMap((params: ParamMap) => {
+        this.player = params.get('player');
+        return this.service.getGame(+params.get('id'));
+      })
     );
-    this.player$ = this.route.paramMap.pipe(
-      switchMap((params: ParamMap) =>
-        params.get('player'))
-    );
+    // this.player$ = this.route.paramMap.pipe(
+    //   switchMap((params: ParamMap) =>
+    //     params.get('player'))
+    //     // of("Foo"))
+    // );
   }
 }
