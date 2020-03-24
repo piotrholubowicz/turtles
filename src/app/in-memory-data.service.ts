@@ -8,14 +8,14 @@ import { Injectable } from '@angular/core';
 })
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
-    return {GAMES};
+    const games = GAMES;
+    return {games};
   }
 
-  // Overrides the genId method to ensure that a hero always has an id.
-  // If the heroes array is empty,
-  // the method below returns the initial number (11).
-  // if the heroes array is not empty, the method below returns the highest
-  // hero id + 1.
+  // Overrides the genId method to ensure that a game always has an id.
+  // If the games array is empty, the method below returns the initial number (11).
+  // If the games array is not empty, the method below returns the highest
+  // game id + 1.
   genId(games: Game[]): number {
     return games.length > 0 ? Math.max(...games.map(game => game.id)) + 1 : 100;
   }

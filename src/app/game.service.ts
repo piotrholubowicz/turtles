@@ -5,14 +5,13 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { Game, Color } from './game';
-import { GAMES } from './mock-games';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GameService {
 
-  private heroesUrl = 'api/heroes';  // URL to web api
+  private gamesUrl = 'api/games';  // URL to web api
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -22,19 +21,19 @@ export class GameService {
 
   /** GET heroes from the server */
   getGames(): Observable<Game[]> {
-    return this.http.get<Game[]>(this.heroesUrl)
+    return this.http.get<Game[]>(this.gamesUrl)
       .pipe(
-        tap(_ => console.log('fetched heroes')),
-        catchError(this.handleError<Game[]>('getHeroes', []))
+        tap(_ => console.log('fetched games')),
+        catchError(this.handleError<Game[]>('getGames', []))
       );
   }
 
   /** GET hero by id. Will 404 if id not found */
   getGame(id: number): Observable<Game> {
-    const url = `${this.heroesUrl}/${id}`;
+    const url = `${this.gamesUrl}/${id}`;
     return this.http.get<Game>(url).pipe(
-      tap(_ => console.log(`fetched hero id=${id}`)),
-      catchError(this.handleError<Game>(`getHero id=${id}`))
+      tap(_ => console.log(`fetched game id=${id}`)),
+      catchError(this.handleError<Game>(`getGame id=${id}`))
     );
   }
 
@@ -42,7 +41,7 @@ export class GameService {
 
   /** POST: add a new hero to the server */
   addHero (hero: Game): Observable<Game> {
-    return this.http.post<Game>(this.heroesUrl, hero, this.httpOptions).pipe(
+    return this.http.post<Game>(this.gamesUrl, hero, this.httpOptions).pipe(
       tap((newHero: Game) => console.log(`added hero w/ id=${newHero.id}`)),
       catchError(this.handleError<Game>('addHero'))
     );
@@ -51,7 +50,7 @@ export class GameService {
   /** DELETE: delete the hero from the server */
   deleteHero (hero: Game | number): Observable<Game> {
     const id = typeof hero === 'number' ? hero : hero.id;
-    const url = `${this.heroesUrl}/${id}`;
+    const url = `${this.gamesUrl}/${id}`;
 
     return this.http.delete<Game>(url, this.httpOptions).pipe(
       tap(_ => console.log(`deleted hero id=${id}`)),
@@ -61,7 +60,7 @@ export class GameService {
 
   /** PUT: update the hero on the server */
   updateHero (hero: Game): Observable<any> {
-    return this.http.put(this.heroesUrl, hero, this.httpOptions).pipe(
+    return this.http.put(this.gamesUrl, hero, this.httpOptions).pipe(
       tap(_ => console.log(`updated hero id=${hero.id}`)),
       catchError(this.handleError<any>('updateHero'))
     );
