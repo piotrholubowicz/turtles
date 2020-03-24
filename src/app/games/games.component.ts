@@ -9,10 +9,10 @@ import { Game } from '../game';
 
 @Component({
   selector: 'app-game-list',
-  templateUrl: './game-list.component.html',
-  styleUrls: ['./game-list.component.css']
+  templateUrl: './games.component.html',
+  styleUrls: ['./games.component.css']
 })
-export class GameListComponent implements OnInit {
+export class GamesComponent implements OnInit {
   games$: Observable<Game[]>;
 
   constructor(
