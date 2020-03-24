@@ -15,6 +15,7 @@ import { GameService } from '../game.service';
 export class PlayerComponent implements OnInit {
   game$: Observable<Game>;
   player: string;
+  Color = Color;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,10 +29,5 @@ export class PlayerComponent implements OnInit {
         return this.service.getGame(+params.get('id'));
       })
     );
-    // this.player$ = this.route.paramMap.pipe(
-    //   switchMap((params: ParamMap) =>
-    //     params.get('player'))
-    //     // of("Foo"))
-    // );
   }
 }

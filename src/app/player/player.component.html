@@ -1,5 +1,7 @@
 <div *ngIf="game$ | async as game">
-<p>
-player {{player}} works!
-</p>
+<p>Gracz: {{player}}</p>
+<p>Twój kolor: {{Color[game.colors.get(player)]}}</p>
+
+  <app-card *ngFor="let card of game.hands.get(player)" [card]="card" [game]="game"></app-card>
+
 </div>

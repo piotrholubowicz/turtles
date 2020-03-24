@@ -9,10 +9,11 @@ import { GameService } from './game.service';
 import { GamesComponent } from './games/games.component';
 import { BoardComponent } from './board/board.component';
 import { PlayerComponent } from './player/player.component';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, AppRoutingModule ],
-  declarations: [ AppComponent, GamesComponent, BoardComponent, PlayerComponent ],
+  declarations: [ AppComponent, GamesComponent, BoardComponent, PlayerComponent, CardComponent ],
   bootstrap:    [ AppComponent ],
   providers: [GameService]
 })
