@@ -9,6 +9,7 @@ import { Injectable } from '@angular/core';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const games = GAMES;
+    console.log("created the db")
     return {games};
   }
 
