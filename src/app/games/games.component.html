@@ -1,9 +1,38 @@
 <p>Games:</p>
 
 <ul class="heroes">
-  <li *ngFor="let game of games$ | async">
+  <li *ngFor="let game of games">
     <a [routerLink]="['/games', game.id]">
       <span class="badge">{{ game.id }}</span>{{ game.players }}
     </a>
+    <button class="delete" title="delete game"
+      (click)="delete(game)">x</button>
   </li>
 </ul>
+
+<div>
+  <label>Gracz 1
+    <input #player1 />
+  </label>
+  <br>
+  <label>Gracz 2
+    <input #player2 />
+  </label>
+  <br>
+  <label>Gracz 3
+    <input #player3 />
+  </label>
+  <br>
+  <label>Gracz 4
+    <input #player4 />
+  </label>
+  <br>
+  <label>Gracz 5
+    <input #player5 />
+  </label>
+  <br>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add([player1.value,player2.value,player3.value,player4.value,player5.value]); player1.value=''; player2.value=''; player3.value=''; player4.value=''; player5.value=''">
+    Nowa gra
+  </button>
+</div>
