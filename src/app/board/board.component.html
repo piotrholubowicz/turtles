@@ -1,6 +1,6 @@
 <div *ngIf="game$ | async as game">
 
-  <p>Game <b>{{ game.id }}</b>:</p>
+  <p>Gra <b>{{ game.id }}</b>:</p>
 
   <p *ngFor="let field of game.board">
       [ <span *ngFor="let color of field"> {{ Color[color] }}</span> ]
