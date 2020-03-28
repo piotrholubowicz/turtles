@@ -11,7 +11,8 @@ import { Game, Color } from './game';
 })
 export class GameService {
 
-  private gamesUrl = 'api/games';  // URL to web api
+  // private gamesUrl = 'https://turtles-server--piotrholubowicz.repl.co/games/';  // URL to web api
+  private gamesUrl = 'https://turtles-server.herokuapp.com/games';  // URL to web api
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
