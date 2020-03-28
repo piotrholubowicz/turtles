@@ -36,16 +36,36 @@ export class GameEngine {
     };
   }
 
-  playCard(game: Game, card_id: number, color: Color) {
+  // color should be well defined
+  static playCard(game: Game, cardIdx: number, color: Color) {
+    GameEngine.makeMove(game, ALL_CARDS[cardIdx], color);
+  }
+
+  static makeMove(game: Game, card: Card, color: Color) {
+    let fieldAndPos = GameEngine.findPosition(game, color);
+    let field = fieldAndPos[0];
+    let pos = fieldAndPos[1];
+  
+    // On start turtles are not stacked
+    let stackSize = field=0 ? 1 : game.board[field].length-pos;
+    // We can't jump out of the board
+    let landingField = Math.min(field + card.distance, game.board.length-1);
+
+    let stack = game.board[field].splice(pos, stackSize);
+    game.board[landingField] = game.board[landingField].concat(stack);
+  }
+
+  static findPosition(game: Game, color: Color) {
     let field = 0;
     let pos = 0;
     for (field=0; field<game.board.length; field++) {
       for (pos=0; pos<game.board[field].length; pos++) {
         if (game.board[field][pos] == color) {
-          break;
+          return [field, pos];
         }
       }
     }
+    throw `Invalid board, ${color} not found`;
   }
 
   static shuffle<T>(a: T[]): T[] {

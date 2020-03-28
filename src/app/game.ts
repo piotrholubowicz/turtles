@@ -13,10 +13,15 @@ export enum Direction {
   DOWN
 }
 
-export interface Card {
+export class Card {
   direction: Direction;
   distance: number;  // 1-2
   color: Color;
+
+  toString(): string {
+    return "foo";
+    // return `${Color[this.color]}: ${this.distance} ${Direction[this.direction]}`;
+  }
 }
 
 export interface Game {

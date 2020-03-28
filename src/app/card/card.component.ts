@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Game, Card, Color, Direction, ALL_CARDS } from '../game';
 
@@ -9,7 +9,8 @@ import { Game, Card, Color, Direction, ALL_CARDS } from '../game';
 })
 export class CardComponent implements OnInit {
   @Input() game: Game;
-  @Input() cardIdx: number;
+  @Input('card') cardIdx: number;
+  @Output() played = new EventEmitter<number>();
   Color = Color;
   Direction = Direction;
 
@@ -17,6 +18,10 @@ export class CardComponent implements OnInit {
 
   card(): Card {
     return ALL_CARDS[this.cardIdx];
+  }
+
+  play(): void {
+    this.played.emit(this.cardIdx);
   }
 
   ngOnInit() {

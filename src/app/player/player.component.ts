@@ -4,8 +4,9 @@ import { switchMap } from 'rxjs/operators';
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
-import { Game, Color } from '../game';
+import { Game, Color, ALL_CARDS } from '../game';
 import { GameService } from '../game.service';
+import { GameEngine }  from '../game-engine';
 
 @Component({
   selector: 'app-player',
@@ -30,4 +31,9 @@ export class PlayerComponent implements OnInit {
       })
     );
   }
+
+  onPlayed(card: number) {
+    GameEngine.playCard();
+    console.log(`${this.player} plays ${JSON.stringify(ALL_CARDS[card])}`);
+  }  
 }
