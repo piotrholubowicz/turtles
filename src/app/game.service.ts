@@ -27,6 +27,8 @@ export class GameService {
     return mp;
   };
 
+// TODO add polling to GET and POST
+
   /** GET games from the server */
   getGames(): Observable<Game[]> {
     return this.http.get<Game[]>(this.gamesUrl).pipe(

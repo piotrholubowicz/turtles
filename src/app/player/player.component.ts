@@ -33,7 +33,8 @@ export class PlayerComponent implements OnInit {
   }
 
   onPlayed(card: number) {
-    GameEngine.playCard();
+    // GameEngine.playCard();
     console.log(`${this.player} plays ${JSON.stringify(ALL_CARDS[card])}`);
   }  
+
 }
