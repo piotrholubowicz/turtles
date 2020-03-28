@@ -14,16 +14,19 @@ import { GameEngine }  from '../game-engine';
   styleUrls: ['./games.component.css']
 })
 export class GamesComponent implements OnInit {
-  games: Game[];
+  games$: Observable<Game[]>;
 
-  constructor(private service: GameService) { }
+  constructor(
+    private service: GameService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
-    this.getGames();
-  }
-
-  getGames(): void {
-    this.service.getGames().subscribe(games => this.games = games);
+    this.games$ = this.route.paramMap.pipe(
+      switchMap(params => {
+        return this.service.getGames();
+      })
+    );
   }
 
   add(playersInput: string[]): void {
@@ -36,7 +39,6 @@ export class GamesComponent implements OnInit {
   }
 
   delete(game: Game): void {
-    this.games = this.games.filter(h => h !== game);
     this.service.deleteGame(game).subscribe();
   }
 
