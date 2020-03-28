@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { Game, Card, Color, Direction } from '../game';
+import { Game, Card, Color, Direction, ALL_CARDS } from '../game';
 
 @Component({
   selector: 'app-card',
@@ -9,11 +9,15 @@ import { Game, Card, Color, Direction } from '../game';
 })
 export class CardComponent implements OnInit {
   @Input() game: Game;
-  @Input() card: Card;
+  @Input() cardIdx: number;
   Color = Color;
   Direction = Direction;
 
   constructor() { }
+
+  card(): Card {
+    return ALL_CARDS[this.cardIdx];
+  }
 
   ngOnInit() {
   }

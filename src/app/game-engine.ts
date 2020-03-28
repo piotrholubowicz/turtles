@@ -1,16 +1,16 @@
-import { Game, Color, Card, Direction } from './game';
+import { Game, Color, Card, Direction, ALL_CARDS } from './game';
 
 export class GameEngine {
 
   static createGame(players: string[]): Game {
     let turtles = [Color.BLUE, Color.GREEN, Color.PURPLE, Color.RED, Color.YELLOW];
     GameEngine.shuffle(turtles);
-    let deck = [...GameEngine.ALL_CARDS];  // shallow copy
+    let deck = Array.from(ALL_CARDS.keys());  // shallow copy
     GameEngine.shuffle(deck);
 
     let playersToTurtles = new Map<string, Color>();
     players.forEach(player => playersToTurtles.set(player, turtles.pop()));
-    let playersToHands = new Map<string, Card[]>();
+    let playersToHands = new Map<string, number[]>();
     players.forEach(player => playersToHands.set(player, deck.splice(0, 5)));
 
     return {
@@ -57,66 +57,5 @@ export class GameEngine {
     }
     return a;
   }    
-
-  static ALL_CARDS = [
-    { direction: Direction.UP, distance: 1, color: Color.BLUE },
-    { direction: Direction.UP, distance: 1, color: Color.BLUE },
-    { direction: Direction.UP, distance: 1, color: Color.BLUE },
-    { direction: Direction.UP, distance: 1, color: Color.BLUE },
-    { direction: Direction.UP, distance: 1, color: Color.BLUE },
-    { direction: Direction.UP, distance: 2, color: Color.BLUE },
-    { direction: Direction.DOWN, distance: 1, color: Color.BLUE },
-    { direction: Direction.DOWN, distance: 1, color: Color.BLUE },
-
-    { direction: Direction.UP, distance: 1, color: Color.GREEN },
-    { direction: Direction.UP, distance: 1, color: Color.GREEN },
-    { direction: Direction.UP, distance: 1, color: Color.GREEN },
-    { direction: Direction.UP, distance: 1, color: Color.GREEN },
-    { direction: Direction.UP, distance: 1, color: Color.GREEN },
-    { direction: Direction.UP, distance: 2, color: Color.GREEN },
-    { direction: Direction.DOWN, distance: 1, color: Color.GREEN },
-    { direction: Direction.DOWN, distance: 1, color: Color.GREEN },
-
-    { direction: Direction.UP, distance: 1, color: Color.PURPLE },
-    { direction: Direction.UP, distance: 1, color: Color.PURPLE },
-    { direction: Direction.UP, distance: 1, color: Color.PURPLE },
-    { direction: Direction.UP, distance: 1, color: Color.PURPLE },
-    { direction: Direction.UP, distance: 1, color: Color.PURPLE },
-    { direction: Direction.UP, distance: 2, color: Color.PURPLE },
-    { direction: Direction.DOWN, distance: 1, color: Color.PURPLE },
-    { direction: Direction.DOWN, distance: 1, color: Color.PURPLE },
-
-    { direction: Direction.UP, distance: 1, color: Color.RED },
-    { direction: Direction.UP, distance: 1, color: Color.RED },
-    { direction: Direction.UP, distance: 1, color: Color.RED },
-    { direction: Direction.UP, distance: 1, color: Color.RED },
-    { direction: Direction.UP, distance: 1, color: Color.RED },
-    { direction: Direction.UP, distance: 2, color: Color.RED },
-    { direction: Direction.DOWN, distance: 1, color: Color.RED },
-    { direction: Direction.DOWN, distance: 1, color: Color.RED },
-
-    { direction: Direction.UP, distance: 1, color: Color.YELLOW },
-    { direction: Direction.UP, distance: 1, color: Color.YELLOW },
-    { direction: Direction.UP, distance: 1, color: Color.YELLOW },
-    { direction: Direction.UP, distance: 1, color: Color.YELLOW },
-    { direction: Direction.UP, distance: 1, color: Color.YELLOW },
-    { direction: Direction.UP, distance: 2, color: Color.YELLOW },
-    { direction: Direction.DOWN, distance: 1, color: Color.YELLOW },
-    { direction: Direction.DOWN, distance: 1, color: Color.YELLOW },
-
-    { direction: Direction.UP, distance: 1, color: Color.ANY },
-    { direction: Direction.UP, distance: 1, color: Color.ANY },
-    { direction: Direction.UP, distance: 1, color: Color.ANY },
-    { direction: Direction.UP, distance: 1, color: Color.ANY },
-    { direction: Direction.UP, distance: 1, color: Color.ANY },
-    { direction: Direction.DOWN, distance: 1, color: Color.ANY },
-    { direction: Direction.DOWN, distance: 1, color: Color.ANY },
-
-    { direction: Direction.UP, distance: 1, color: Color.LAST },
-    { direction: Direction.UP, distance: 1, color: Color.LAST },
-    { direction: Direction.UP, distance: 1, color: Color.LAST },
-    { direction: Direction.UP, distance: 2, color: Color.LAST },
-    { direction: Direction.UP, distance: 2, color: Color.LAST },
-  ]
 
 }
