@@ -32,10 +32,7 @@ export class GamesComponent implements OnInit {
   add(playersInput: string[]): void {
     let players = playersInput.filter(input => input != '');
     if (players.length < 2) { return; }
-    this.service.addGame(GameEngine.createGame(players))
-      .subscribe(game => {
-        this.games.push(game);
-      });
+    this.service.addGame(GameEngine.createGame(players)).subscribe();
   }
 
   delete(game: Game): void {

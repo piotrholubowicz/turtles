@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
-import { Observable, of } from "rxjs";
-import { catchError, map, tap } from "rxjs/operators";
+import { Observable, of, timer, Subject } from "rxjs";
+import { catchError, map, tap, switchMap, distinctUntilChanged, share } from "rxjs/operators";
 
 import { Game, Color } from "./game";
 
@@ -12,6 +12,10 @@ import { Game, Color } from "./game";
 export class GameService {
   // private gamesUrl = 'https://turtles-server--piotrholubowicz.repl.co/games/';  // URL to web api
   private gamesUrl = "https://turtles-server.herokuapp.com/games"; // URL to web api
+  private games$: Observable<Game[]> = timer(0, 1000).pipe(
+    switchMap(_ => this.fetchGames()),  // a new http request on every tick
+    share(),  // create a new Subject, which will act as a proxy
+  );
 
   httpOptions = {
     headers: new HttpHeaders({ "Content-Type": "application/json" })
@@ -27,12 +31,15 @@ export class GameService {
     return mp;
   };
 
-// TODO add polling to GET and POST
-
   /** GET games from the server */
   getGames(): Observable<Game[]> {
+    return this.games$;
+  }
+
+  fetchGames(): Observable<Game[]> {
     return this.http.get<Game[]>(this.gamesUrl).pipe(
       tap(_ => console.log("fetched games")),
+      distinctUntilChanged(),
       catchError(this.handleError<Game[]>("getGames", []))
     );
   }
