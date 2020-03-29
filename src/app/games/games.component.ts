@@ -22,7 +22,6 @@ export class GamesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('init: gamescomponent');
     this.games$ = this.route.paramMap.pipe(
       switchMap(params => {
         return this.service.getGames();

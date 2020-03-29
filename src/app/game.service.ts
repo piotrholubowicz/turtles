@@ -39,7 +39,7 @@ export class GameService {
 
   fetchGames(): Observable<Game[]> {
     return this.http.get<Game[]>(this.gamesUrl).pipe(
-      tap(_ => console.log("fetched games")),
+      // tap(_ => console.log("fetched games")),
       distinctUntilChanged(),
       catchError(this.handleError<Game[]>("getGames", []))
     );

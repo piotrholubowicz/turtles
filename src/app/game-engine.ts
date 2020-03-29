@@ -39,6 +39,7 @@ export class GameEngine {
   // color should be well defined
   static playCard(game: Game, cardIdx: number, color: Color) {
     GameEngine.makeMove(game, ALL_CARDS[cardIdx], color);
+    GameEngine.useCard(game, cardIdx);
   }
 
   static makeMove(game: Game, card: Card, color: Color) {
@@ -56,6 +57,18 @@ export class GameEngine {
 
     console.log(`moved ${stackSize} from ${field} to ${landingField}`);
     console.log(game);
+  }
+
+  static useCard(game: Game, cardIdx: number) {
+    const player = game.players[game.active_player];
+    console.log(player);
+    // TODO map vs dict
+    let handIdx = game.hands[player].findIndex(i => i == cardIdx);
+    if (handIdx == -1) {
+      throw `Invalid move, ${ALL_CARDS[cardIdx]} not found for ${player}`;
+    }
+    game.discarded.push(game.hands[player].splice(handIdx, 1)[0]);
+    game.hands[player].push(game.deck.pop());
   }
 
   static findPosition(game: Game, color: Color) {
