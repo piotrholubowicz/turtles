@@ -28,6 +28,7 @@ export interface Game {
   discarded: number[];
   board: Color[][];
   active_player: number;
+  winner: string;
 }
 
 export const ALL_CARDS = [

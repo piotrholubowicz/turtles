@@ -33,14 +33,18 @@ export class GameEngine {
         [],
       ],
       active_player: 0,
+      winner: undefined,
     };
   }
 
   // color should be well defined
   static playCard(game: Game, cardIdx: number, color: Color) {
+    if (game.winner) {
+      throw `Can't play anymore, ${game.winner} has won`;
+    }
     GameEngine.makeMove(game, ALL_CARDS[cardIdx], color);
     GameEngine.useCard(game, cardIdx);
-    game.active_player = (game.active_player + 1) % game.players.length;
+    GameEngine.gameOver(game) || GameEngine.nextPlayer(game);
   }
 
   static makeMove(game: Game, card: Card, color: Color) {
@@ -70,6 +74,28 @@ export class GameEngine {
     }
     game.discarded.push(game.hands[player].splice(handIdx, 1)[0]);
     game.hands[player].push(game.deck.pop());
+  }
+
+  static gameOver(game: Game): boolean {
+    if (game.board[game.board.length-1].length == 0) {
+      return false;
+    }
+    for (let field=game.board.length-1; field>=0; field--) {
+      for (let pos=0; pos<game.board[field].length; pos++) {
+        const color: Color = game.board[field][pos];
+        const player: string = Object.keys(game.colors).find(player => game.colors[player] === color);
+        if (player) {
+          game.winner = player;
+          console.log(`${player} won!`);
+          return true;
+        }
+      }
+    }
+    throw `Invalid board, reached last field but no winner found`;
+  }
+
+  static nextPlayer(game: Game) {
+    game.active_player = (game.active_player + 1) % game.players.length;
   }
 
   static findPosition(game: Game, color: Color) {
