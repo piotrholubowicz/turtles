@@ -10,7 +10,7 @@ import { Game, Card, Color, Direction, ALL_CARDS } from '../game';
 export class CardComponent implements OnInit {
   @Input() game: Game;
   @Input('card') cardIdx: number;
-  @Output() played = new EventEmitter<number>();
+  @Output() played = new EventEmitter<{cardIdx: number, game: Game}>();
   Color = Color;
   Direction = Direction;
 
@@ -21,7 +21,7 @@ export class CardComponent implements OnInit {
   }
 
   play(): void {
-    this.played.emit(this.cardIdx);
+    this.played.emit({cardIdx: this.cardIdx, game: this.game});
   }
 
   ngOnInit() {

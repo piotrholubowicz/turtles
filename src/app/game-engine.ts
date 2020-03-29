@@ -47,12 +47,15 @@ export class GameEngine {
     let pos = fieldAndPos[1];
   
     // On start turtles are not stacked
-    let stackSize = field=0 ? 1 : game.board[field].length-pos;
+    let stackSize = field==0 ? 1 : game.board[field].length-pos;
     // We can't jump out of the board
     let landingField = Math.min(field + card.distance, game.board.length-1);
 
     let stack = game.board[field].splice(pos, stackSize);
     game.board[landingField] = game.board[landingField].concat(stack);
+
+    console.log(`moved ${stackSize} from ${field} to ${landingField}`);
+    console.log(game);
   }
 
   static findPosition(game: Game, color: Color) {

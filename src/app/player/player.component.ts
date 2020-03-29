@@ -32,9 +32,11 @@ export class PlayerComponent implements OnInit {
     );
   }
 
-  onPlayed(card: number) {
-    // GameEngine.playCard();
-    console.log(`${this.player} plays ${JSON.stringify(ALL_CARDS[card])}`);
+  onPlayed(event) {
+    const card = ALL_CARDS[event.cardIdx];
+    GameEngine.playCard(event.game, event.cardIdx, card.color);
+    console.log(`${this.player} plays ${JSON.stringify(card)}`);
+    this.service.updateGame(event.game).subscribe();
   }  
 
 }

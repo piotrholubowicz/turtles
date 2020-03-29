@@ -39,7 +39,7 @@ export class GameService {
 
   fetchGames(): Observable<Game[]> {
     return this.http.get<Game[]>(this.gamesUrl).pipe(
-      // tap(_ => console.log("fetched games")),
+      tap(_ => console.log("fetched games")),
       distinctUntilChanged(),
       catchError(this.handleError<Game[]>("getGames", []))
     );
@@ -94,7 +94,9 @@ export class GameService {
 
   /** PUT: update the game on the server */
   updateGame(game: Game): Observable<any> {
-    return this.http.put(this.gamesUrl, game, this.httpOptions).pipe(
+    const url = `${this.gamesUrl}/${game.id}`;
+    console.log(game);
+    return this.http.put(url, game, this.httpOptions).pipe(
       tap(_ => console.log(`updated game id=${game.id}`)),
       catchError(this.handleError<any>("updateGame"))
     );
