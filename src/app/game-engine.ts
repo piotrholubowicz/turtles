@@ -40,6 +40,7 @@ export class GameEngine {
   static playCard(game: Game, cardIdx: number, color: Color) {
     GameEngine.makeMove(game, ALL_CARDS[cardIdx], color);
     GameEngine.useCard(game, cardIdx);
+    game.active_player = (game.active_player + 1) % game.players.length;
   }
 
   static makeMove(game: Game, card: Card, color: Color) {
