@@ -45,6 +45,7 @@ export class GameEngine {
     GameEngine.makeMove(game, ALL_CARDS[cardIdx], color);
     GameEngine.useCard(game, cardIdx);
     GameEngine.gameOver(game) || GameEngine.nextPlayer(game);
+    console.log(game);
   }
 
   static makeMove(game: Game, card: Card, color: Color) {
@@ -74,6 +75,16 @@ export class GameEngine {
     }
     game.discarded.push(game.hands[player].splice(handIdx, 1)[0]);
     game.hands[player].push(game.deck.pop());
+  }
+
+  static reshuffleIfNecessary(game: Game): boolean {
+    if (game.deck.length == 0) {
+      game.deck = game.discarded;
+      GameEngine.shuffle(game.deck);
+      game.discarded = [];
+      return true;
+    }
+    return false;
   }
 
   static gameOver(game: Game): boolean {
