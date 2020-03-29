@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { Game, Card, Color, Direction, ALL_CARDS } from '../game';
+import { Game, Card, Color, ALL_CARDS } from '../game';
 
 @Component({
   selector: 'app-card',
@@ -12,7 +12,6 @@ export class CardComponent implements OnInit {
   @Input('card') cardIdx: number;
   @Output() played = new EventEmitter<{cardIdx: number, game: Game}>();
   Color = Color;
-  Direction = Direction;
 
   constructor() { }
 

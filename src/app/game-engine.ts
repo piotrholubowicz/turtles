@@ -57,6 +57,9 @@ export class GameEngine {
     let stackSize = field==0 ? 1 : game.board[field].length-pos;
     // We can't jump out of the board
     let landingField = Math.min(field + card.distance, game.board.length-1);
+    if (landingField < 0) {
+      throw `Can't go back, already on the first field`;
+    }
 
     let stack = game.board[field].splice(pos, stackSize);
     game.board[landingField] = game.board[landingField].concat(stack);

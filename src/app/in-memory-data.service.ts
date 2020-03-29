@@ -1,6 +1,5 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Game } from './game';
-import { GAMES } from './mock-games';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -8,7 +7,7 @@ import { Injectable } from '@angular/core';
 })
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
-    const games = GAMES;
+    const games = [];
     console.log("created the db")
     return {games};
   }
