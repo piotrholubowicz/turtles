@@ -16,6 +16,7 @@ export class GameService {
     switchMap(_ => this.fetchGames()),  // a new http request on every tick
     share(),  // create a new Subject, which will act as a proxy
   );
+  private perGame$ = new Map<number, Observable<Game>>();
 
   httpOptions = {
     headers: new HttpHeaders({ "Content-Type": "application/json" })
@@ -38,7 +39,7 @@ export class GameService {
 
   fetchGames(): Observable<Game[]> {
     return this.http.get<Game[]>(this.gamesUrl).pipe(
-      tap(_ => console.log("fetched games")),
+      // tap(_ => console.log("fetched games")),
       distinctUntilChanged(),
       catchError(this.handleError<Game[]>("getGames", []))
     );
@@ -46,9 +47,21 @@ export class GameService {
 
   /** GET game by id. Will 404 if id not found */
   getGame(id: number): Observable<Game> {
+    if (!this.perGame$.has(id)) {
+      const game$ = timer(0, 1000).pipe(
+        switchMap(_ => this.fetchGame(id)),  // a new http request on every tick
+        share(),  // create a new Subject, which will act as a proxy
+      );
+      this.perGame$.set(id, game$);
+    }
+    return this.perGame$.get(id);
+  }
+
+  fetchGame(id: number): Observable<Game> {
     const url = `${this.gamesUrl}/${id}`;
     return this.http.get<Game>(url).pipe(
-      tap(_ => console.log(`fetched game id=${id}`)),
+      // tap(_ => console.log(`fetched game id=${id}`)),
+      distinctUntilChanged(),
       tap((game: Game) => {
         game.hands = GameService.objToMap(game.hands);
         game.colors = GameService.objToMap(game.colors);
