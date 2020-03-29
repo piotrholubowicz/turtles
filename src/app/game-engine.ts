@@ -8,10 +8,10 @@ export class GameEngine {
     let deck = Array.from(ALL_CARDS.keys());  // shallow copy
     GameEngine.shuffle(deck);
 
-    let playersToTurtles = new Map<string, Color>();
-    players.forEach(player => playersToTurtles.set(player, turtles.pop()));
-    let playersToHands = new Map<string, number[]>();
-    players.forEach(player => playersToHands.set(player, deck.splice(0, 5)));
+    let playersToTurtles: { [id: string]: Color; } = {};
+    players.forEach(player => playersToTurtles[player] = turtles.pop());
+    let playersToHands: { [id: string]: number[]; } = {};
+    players.forEach(player => playersToHands[player] = deck.splice(0, 5));
 
     return {
       id: undefined,

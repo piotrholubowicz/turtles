@@ -1,8 +1,8 @@
 <div *ngIf="game$ | async as game">
 <p>Gracz: {{player}}</p>
 <p>Kolej gracza: {{game.players[game.active_player]}}</p>
-<p>Twój kolor: {{Color[game.colors.get(player)]}}</p>
+<p>Twój kolor: {{Color[game.colors[player]]}}</p>
 
-<app-card *ngFor="let card of game.hands.get(player)" [card]="card" [game]="game" (played)="onPlayed($event)"></app-card>
+<app-card *ngFor="let card of game.hands[player]" [card]="card" [game]="game" (played)="onPlayed($event)"></app-card>
 
 </div>

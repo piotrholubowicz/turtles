@@ -24,14 +24,6 @@ export class GameService {
 
   constructor(private http: HttpClient) {}
 
-  static objToMap(obj) {
-    const mp = new Map();
-    obj.forEach(entry => {
-      mp.set(entry[0], entry[1]);
-    });
-    return mp;
-  };
-
   /** GET games from the server */
   getGames(): Observable<Game[]> {
     return this.games$;
@@ -62,10 +54,6 @@ export class GameService {
     return this.http.get<Game>(url).pipe(
       // tap(_ => console.log(`fetched game id=${id}`)),
       distinctUntilChanged(),
-      tap((game: Game) => {
-        game.hands = GameService.objToMap(game.hands);
-        game.colors = GameService.objToMap(game.colors);
-      }),
       catchError(this.handleError<Game>(`getGame id=${id}`))
     );
   }
