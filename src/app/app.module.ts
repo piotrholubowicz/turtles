@@ -6,6 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
@@ -18,7 +20,7 @@ import { ColorPickerDialogComponent } from './card/color-picker-dialog/color-pic
 
 @NgModule({
   imports:      [ 
-    BrowserModule, FormsModule, AppRoutingModule, HttpClientModule,
+    BrowserModule, FormsModule, AppRoutingModule, HttpClientModule, NgbModule
 
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
@@ -30,6 +32,7 @@ import { ColorPickerDialogComponent } from './card/color-picker-dialog/color-pic
    ],
   declarations: [ AppComponent, GamesComponent, BoardComponent, PlayerComponent, CardComponent, ColorPickerDialogComponent ],
   bootstrap:    [ AppComponent ],
-  providers: [GameService, InMemoryDataService]
+  providers: [GameService, InMemoryDataService],
+  entryComponents: [ColorPickerDialogComponent]
 })
 export class AppModule { }

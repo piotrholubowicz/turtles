@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { VERSION, MatDialog, MatDialogRef } from '@angular/material';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { Game, Card, Color, ALL_CARDS } from '../game';
-import { ColorPickerDialogComponent } from './color-picker-dialog';
+import { ColorPickerDialogComponent } from './color-picker-dialog/color-picker-dialog.component';
 
 @Component({
   selector: 'app-card',
@@ -10,16 +10,12 @@ import { ColorPickerDialogComponent } from './color-picker-dialog';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit {
-  version = VERSION;
-
   @Input() game: Game;
   @Input('card') cardIdx: number;
   @Output() played = new EventEmitter<{cardIdx: number, game: Game}>();
   Color = Color;
 
-  colorPickerDialogRef: MatDialogRef<ColorPickerDialogComponent>;
-
-  constructor(private dialog: MatDialog) { }
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit() {
   }
@@ -33,7 +29,7 @@ export class CardComponent implements OnInit {
   }
 
   openColorPickerDialog() {
-    this.colorPickerDialogRef = this.dialog.open(ColorPickerDialogComponent);
+    const modalRef = this.modalService.open(ColorPickerDialogComponent);
   }
 
 }
