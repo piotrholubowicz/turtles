@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { VERSION, MatDialog, MatDialogRef } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 import { Game, Card, Color, ALL_CARDS } from '../game';
-import { ColorPickerDialogComponent } from './color-picker-dialog';
+import { ColorPickerDialogComponent } from './color-picker-dialog/color-picker-dialog.component';
 
 @Component({
   selector: 'app-card',
@@ -10,8 +10,6 @@ import { ColorPickerDialogComponent } from './color-picker-dialog';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit {
-  version = VERSION;
-
   @Input() game: Game;
   @Input('card') cardIdx: number;
   @Output() played = new EventEmitter<{cardIdx: number, game: Game}>();
@@ -32,7 +30,7 @@ export class CardComponent implements OnInit {
     this.played.emit({cardIdx: this.cardIdx, game: this.game});
   }
 
-  openColorPickerDialog() {
+  openColorPickerDialog(): void {
     this.colorPickerDialogRef = this.dialog.open(ColorPickerDialogComponent);
   }
 
