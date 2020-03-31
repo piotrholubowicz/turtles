@@ -32,6 +32,7 @@ export class GameEngine {
         [],
         [],
       ],
+      last_move: undefined,
       active_player: 0,
       winner: undefined,
     };
@@ -70,6 +71,7 @@ export class GameEngine {
     }
     GameEngine.makeMove(game, ALL_CARDS[cardIdx].distance, color);
     GameEngine.useCard(game, cardIdx);
+    GameEngine.reshuffleIfNecessary(game);
     GameEngine.gameOver(game) || GameEngine.nextPlayer(game);
     console.log(game);
   }
@@ -86,12 +88,14 @@ export class GameEngine {
     if (landingField < 0) {
       throw `Can't go back, already on the first field`;
     }
+    let landingPos = game.board[landingField].length;
 
     let stack = game.board[field].splice(pos, stackSize);
     game.board[landingField] = game.board[landingField].concat(stack);
 
     console.log(`moved ${stackSize} from ${field} to ${landingField}`);
     console.log(game);
+    game.last_move = {color: color, start: fieldAndPos, end: [landingField, landingPos]};
   }
 
   static useCard(game: Game, cardIdx: number) {

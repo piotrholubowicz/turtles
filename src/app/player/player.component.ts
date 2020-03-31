@@ -46,7 +46,7 @@ export class PlayerComponent implements OnInit {
         console.log(error);
       });
     } else {
-      this.playTheCard(event.game, event.cardIdx, ALL_CARDS[event.cardIdx].color);
+      this.playTheCard(event.game, event.cardIdx, colorOptions[0]);
     }
   }
 

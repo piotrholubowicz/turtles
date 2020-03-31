@@ -5,4 +5,7 @@
   <p *ngFor="let field of game.board">
       [ <span *ngFor="let color of field"> {{ Color[color] }}</span> ]
   </p>
+  <p>Kart w talii: {{ game.deck.length }}</p>
+  <p>Kart zagranych: {{ game.discarded.length }}</p>
+  <p>Ostatni ruch: {{Color[game.last_move.color]}} z {{game.last_move.start}} do {{game.last_move.end}}</p>
 </div>

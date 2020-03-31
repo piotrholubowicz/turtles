@@ -13,6 +13,12 @@ export interface Card {
   color: Color;
 }
 
+export interface Move {
+  color: Color;
+  start: number[];
+  end: number[];
+}
+
 export interface Game {
   id: number;
   players: string[];
@@ -21,6 +27,7 @@ export interface Game {
   deck: number[];
   discarded: number[];
   board: Color[][];
+  last_move: Move;
   active_player: number;
   winner: string;
 }
