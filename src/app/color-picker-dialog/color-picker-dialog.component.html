@@ -1,12 +1,25 @@
 <div class="modal-header">
-  <h4 class="modal-title">Hi there!</h4>
+  <h4 class="modal-title">Wybierz żółwia</h4>
   <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-<div class="modal-body">
-  <p>Hello, {{name}}!</p>
-</div>
-<div class="modal-footer">
-  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
-</div>
+
+<form [formGroup]="colorPickerForm" (ngSubmit)="submitForm()">
+  <div class="modal-body">
+    <div class="container">
+      <div class="form-group">
+        <p>Którego żółwia chcesz przesunąć?</p>
+        <div *ngFor="let color of colors" class="custom-control custom-radio">
+          <input class="custom-control-input" type="radio" name="color" id="{{color}}" value="{{color}}" required/>
+          <label class="custom-control-label" for="{{color}}">{{Color[color]}}</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-success" [disabled]="!colorPickerForm.valid">
+      OK
+    </button>
+  </div>
+</form>

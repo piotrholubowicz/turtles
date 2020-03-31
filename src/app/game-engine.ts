@@ -37,7 +37,7 @@ export class GameEngine {
     };
   }
 
-  static defineColor(game: Game, cardIdx: number): Color[] {
+  static defineColors(game: Game, cardIdx: number): Color[] {
     const color = ALL_CARDS[cardIdx].color;
     switch(color) {
       case Color.BLUE:
