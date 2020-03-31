@@ -8,4 +8,7 @@
   <p>Kart w talii: {{ game.deck.length }}</p>
   <p>Kart zagranych: {{ game.discarded.length }}</p>
   <p>Ostatni ruch: {{Color[game.last_move.color]}} z {{game.last_move.start}} do {{game.last_move.end}}</p>
+  <p *ngFor="let player of game.players">
+    <a [routerLink]="['/games', game.id, player]">{{player}}</a>
+  </p>
 </div>
