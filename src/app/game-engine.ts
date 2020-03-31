@@ -65,7 +65,6 @@ export class GameEngine {
 
   // color should be well defined
   static playCard(game: Game, cardIdx: number, color: Color) {
-    console.log(`Moving ${color}`);
     if (game.winner) {
       throw `Can't play anymore, ${game.winner} has won`;
     }
