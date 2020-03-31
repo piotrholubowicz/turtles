@@ -17,6 +17,7 @@ import { BoardComponent } from './board/board.component';
 import { PlayerComponent } from './player/player.component';
 import { CardComponent } from './card/card.component';
 import { ColorPickerDialogComponent } from './color-picker-dialog/color-picker-dialog.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   imports:      [ 
@@ -35,7 +36,7 @@ import { ColorPickerDialogComponent } from './color-picker-dialog/color-picker-d
     // )
 
    ],
-  declarations: [ AppComponent, GamesComponent, BoardComponent, PlayerComponent, CardComponent, ColorPickerDialogComponent ],
+  declarations: [ AppComponent, GamesComponent, BoardComponent, PlayerComponent, CardComponent, ColorPickerDialogComponent, PageNotFoundComponent ],
   bootstrap:    [ AppComponent ],
   providers: [GameService, InMemoryDataService],
   entryComponents: [ColorPickerDialogComponent]
