@@ -27,8 +27,4 @@ export class CardComponent implements OnInit {
     this.played.emit({cardIdx: this.cardIdx, game: this.game});
   }
 
-  openColorPickerDialog() {
-    const modalRef = this.modalService.open(ColorPickerDialogComponent);
-  }
-
 }

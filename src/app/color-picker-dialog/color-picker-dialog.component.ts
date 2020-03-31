@@ -11,7 +11,7 @@ import { Color } from '../game';
 })
 export class ColorPickerDialogComponent implements OnInit {
   @Input() colors: Color[];
-  colorPickerForm: FormGroup;
+  colorPickerFormGroup: FormGroup;
   Color = Color;
 
   constructor(
@@ -22,13 +22,13 @@ export class ColorPickerDialogComponent implements OnInit {
   }
 
   private createForm() {
-    this.colorPickerForm = this.formBuilder.group({
-      color: '',
+    this.colorPickerFormGroup = this.formBuilder.group({
+      color: ['', [Validators.required]],
     });
   }
 
   private submitForm() {
-    this.activeModal.close(this.colorPickerForm.value);
+    this.activeModal.close(this.colorPickerFormGroup.value);
   }
 
   ngOnInit() {
