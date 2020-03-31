@@ -1,4 +1,4 @@
-import { Game, Color, Card, Direction, ALL_CARDS } from './game';
+import { Game, Color, Card, ALL_CARDS } from './game';
 
 export class GameEngine {
 
@@ -65,16 +65,17 @@ export class GameEngine {
 
   // color should be well defined
   static playCard(game: Game, cardIdx: number, color: Color) {
+    console.log(`Moving ${color}`);
     if (game.winner) {
       throw `Can't play anymore, ${game.winner} has won`;
     }
-    GameEngine.makeMove(game, ALL_CARDS[cardIdx], color);
+    GameEngine.makeMove(game, ALL_CARDS[cardIdx].distance, color);
     GameEngine.useCard(game, cardIdx);
     GameEngine.gameOver(game) || GameEngine.nextPlayer(game);
     console.log(game);
   }
 
-  static makeMove(game: Game, card: Card, color: Color) {
+  static makeMove(game: Game, distance: number, color: Color) {
     let fieldAndPos = GameEngine.findPosition(game, color);
     let field = fieldAndPos[0];
     let pos = fieldAndPos[1];
@@ -82,7 +83,7 @@ export class GameEngine {
     // On start turtles are not stacked
     let stackSize = field==0 ? 1 : game.board[field].length-pos;
     // We can't jump out of the board
-    let landingField = Math.min(field + card.distance, game.board.length-1);
+    let landingField = Math.min(field + distance, game.board.length-1);
     if (landingField < 0) {
       throw `Can't go back, already on the first field`;
     }
@@ -148,6 +149,7 @@ export class GameEngine {
         }
       }
     }
+    console.log(game);
     throw `Invalid board, ${color} not found`;
   }
 

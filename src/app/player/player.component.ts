@@ -18,7 +18,7 @@ import { ColorPickerDialogComponent } from '../color-picker-dialog/color-picker-
 export class PlayerComponent implements OnInit {
   game$: Observable<Game>;
   player: string;
-  Color = Color;
+  ColorT = Color;
 
   constructor(
     private route: ActivatedRoute,
@@ -38,19 +38,32 @@ export class PlayerComponent implements OnInit {
   onPlayed(event) {
     const colorOptions: Color[] = GameEngine.defineColors(event.game, event.cardIdx);
     if (colorOptions.length == 0) {
-      // TODO: say no way
+      this.cantPlayCard();
     } else if (colorOptions.length > 1) {
+      this.pickOneColor(colorOptions).then(result => {
+        this.playTheCard(event.game, event.cardIdx, +result.color);
+      }).catch(error => {
+        console.log(error);
+      });
+    } else {
+      this.playTheCard(event.game, event.cardIdx, ALL_CARDS[event.cardIdx].color);
+    }
+  }
+
+  cantPlayCard() {
+
+  }
+
+  pickOneColor(colorOptions: Color[]): Promise<any> {
       const modalRef = this.modalService.open(ColorPickerDialogComponent);
       modalRef.componentInstance.colors = colorOptions;
-      modalRef.result.then(
-        (result) => {console.log(result);}
-      ).catch((error) => {console.log(error);});
-    } else {
-      const card = ALL_CARDS[event.cardIdx];
-      GameEngine.playCard(event.game, event.cardIdx, card.color);
-      console.log(`${this.player} plays ${JSON.stringify(card)}`);
-      this.service.updateGame(event.game).subscribe();
-    }
-  }  
+      return modalRef.result;
+  }
+
+  playTheCard(game: Game, cardIdx: number, color: Color) {
+      GameEngine.playCard(game, cardIdx, color);
+      console.log(`${this.player} plays ${JSON.stringify(ALL_CARDS[cardIdx])}`);
+      this.service.updateGame(game).subscribe();
+  }
 
 }
