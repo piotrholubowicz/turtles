@@ -16,7 +16,7 @@ import { GamesComponent } from './games/games.component';
 import { BoardComponent } from './board/board.component';
 import { PlayerComponent } from './player/player.component';
 import { CardComponent } from './card/card.component';
-import { ColorPickerDialogComponent } from './card/color-picker-dialog/color-picker-dialog.component';
+import { ColorPickerDialogComponent } from './color-picker-dialog/color-picker-dialog.component';
 
 @NgModule({
   imports:      [ 
