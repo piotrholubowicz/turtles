@@ -37,6 +37,32 @@ export class GameEngine {
     };
   }
 
+  static defineColor(game: Game, cardIdx: number): Color[] {
+    const color = ALL_CARDS[cardIdx].color;
+    switch(color) {
+      case Color.BLUE:
+      case Color.GREEN:
+      case Color.PURPLE:
+      case Color.RED:
+      case Color.YELLOW:
+        let fieldAndPos = GameEngine.findPosition(game, color);
+        if (fieldAndPos[0] == 0 && ALL_CARDS[cardIdx].distance < 0) {
+          console.log(`Can't move back ${color}`);
+          return [];
+        }
+        return [color];
+      case Color.ANY:
+        let colors = [Color.BLUE, Color.GREEN, Color.PURPLE, Color.RED, Color.YELLOW];
+        if (ALL_CARDS[cardIdx].distance < 0) {
+          colors = colors.filter(c => game.board[0].indexOf(c) == -1);
+        }
+        return colors;
+      case Color.LAST:
+        return [...game.board.find(f => f.length > 0)];
+    }
+    throw `Unsupported color ${color}`;
+  }
+
   // color should be well defined
   static playCard(game: Game, cardIdx: number, color: Color) {
     if (game.winner) {
