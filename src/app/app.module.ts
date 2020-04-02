@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { APP_BASE_HREF } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -38,7 +39,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
    ],
   declarations: [ AppComponent, GamesComponent, BoardComponent, PlayerComponent, CardComponent, ColorPickerDialogComponent, PageNotFoundComponent ],
   bootstrap:    [ AppComponent ],
-  providers: [GameService, InMemoryDataService],
+  providers: [{provide: APP_BASE_HREF, useValue: '/'}, GameService, InMemoryDataService],
   entryComponents: [ColorPickerDialogComponent]
 })
 export class AppModule { }
