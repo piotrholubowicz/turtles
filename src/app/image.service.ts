@@ -9,10 +9,14 @@ export class ImageService {
 
   constructor() { }
 
-  getFullCardPath(card: Card): string {
+  getMoveCardPath(card: Card): string {
     let color = Color[card.color].toLowerCase();
     let sign = card.distance == -1 ? 'minus' : (card.distance == 2 ? 'plusplus' : 'plus');
     return `${this.PREFIX}/card-${color}-${sign}.png`;
+  }
+
+  getTitlePath(): string {
+    return `${this.PREFIX}/t.png`;
   }
 
 }

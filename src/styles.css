@@ -1,5 +1,10 @@
 /* Add application styles & imports to this file! */
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css");
+
 
 body {
   font-family: Lato;
+  font-size: 15pt;
+  color: #eeeeee;
+  background-image: url("https://raw.githubusercontent.com/piotrholubowicz/turtles/master/src/assets/img/background.jpg");
 }

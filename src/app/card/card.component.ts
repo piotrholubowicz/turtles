@@ -35,7 +35,7 @@ export class CardComponent implements OnInit {
   }
 
   src(): string {
-    return this.imageService.getFullCardPath(ALL_CARDS[this.cardIdx]);
+    return this.imageService.getMoveCardPath(ALL_CARDS[this.cardIdx]);
   }
 
 }
