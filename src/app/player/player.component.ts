@@ -1,4 +1,4 @@
-import { Observable, of } from 'rxjs';
+import { Observable, of, merge, timer } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 import { Component, OnInit, Input } from '@angular/core';
@@ -75,7 +75,12 @@ export class PlayerComponent implements OnInit {
   }
 
   showTurtleCard(color: Color) {
-
+    this.turtleCardSrc$ = merge(
+      of(this.turtleCardSrc(color)),
+      timer(2000).pipe(
+        switchMap(_ => of(this.turtleCardSrc()))
+      )
+    );
   }
 
 }
