@@ -4,9 +4,9 @@
       <p>Gracz: {{player}}</p>
       <p>Kolej gracza: {{game.players[game.active_player]}}</p>
     </div>
-    <div class="col-4"></div>
-    <div class="col-4">
-      <p>Twój kolor: {{ColorT[game.colors[player]]}}</p>
+    <div class="col-6"></div>
+    <div class="col-2">
+      <img src="{{ turtleCardSrc$ | async }}" (click)="showTurtleCard(game.colors[player])" class="turtlecard"/>
     </div>
   </div>
   <div class="row">

@@ -15,8 +15,13 @@ export class ImageService {
     return `${this.PREFIX}/card-${color}-${sign}.png`;
   }
 
+  getTurtleCardPath(color?: Color): string {
+    let which = color ? Color[color].toLowerCase() : 'back';
+    return `${this.PREFIX}/turtle-card-${which}.png`;
+  }
+
   getTitlePath(): string {
-    return `${this.PREFIX}/t.png`;
+    return `${this.PREFIX}/title.png`;
   }
 
 }

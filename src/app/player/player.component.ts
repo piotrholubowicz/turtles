@@ -8,6 +8,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Game, Color, ALL_CARDS } from '../game';
 import { GameService } from '../game.service';
 import { GameEngine }  from '../game-engine';
+import { ImageService } from '../image.service';
 import { ColorPickerDialogComponent } from '../color-picker-dialog/color-picker-dialog.component';
 
 @Component({
@@ -17,6 +18,7 @@ import { ColorPickerDialogComponent } from '../color-picker-dialog/color-picker-
 })
 export class PlayerComponent implements OnInit {
   game$: Observable<Game>;
+  turtleCardSrc$: Observable<string>;
   player: string;
   ColorT = Color;
 
@@ -24,7 +26,8 @@ export class PlayerComponent implements OnInit {
     private route: ActivatedRoute,
     private service: GameService,
     private modalService: NgbModal,
-  ) {}
+    private imageService: ImageService,
+) {}
 
   ngOnInit(): void {
     this.game$ = this.route.paramMap.pipe(
@@ -33,6 +36,7 @@ export class PlayerComponent implements OnInit {
         return this.service.getGame(+params.get('id'));
       })
     );
+    this.turtleCardSrc$ = of(this.turtleCardSrc());
   }
 
   onPlayed(event) {
@@ -64,6 +68,14 @@ export class PlayerComponent implements OnInit {
       GameEngine.playCard(game, cardIdx, color);
       console.log(`${this.player} plays ${JSON.stringify(ALL_CARDS[cardIdx])}`);
       this.service.updateGame(game).subscribe();
+  }
+
+  turtleCardSrc(color?: Color): string {
+    return this.imageService.getTurtleCardPath(color);
+  }
+
+  showTurtleCard(color: Color) {
+
   }
 
 }
