@@ -24,4 +24,8 @@ export class ImageService {
     return `${this.PREFIX}/title.png`;
   }
 
+  getYourTurnPath(): string {
+    return `${this.PREFIX}/yourturn.png`;
+  }
+
 }
