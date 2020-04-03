@@ -1,12 +1,11 @@
 <div *ngIf="game$ | async as game">
   <div class="row top-row">
-    <div class="col-4">
-      <p>Gracz: {{player}}</p>
-      <p>Kolej gracza: {{game.players[game.active_player]}}</p>
+    <div class="col-10">
+      <p class="players"><span *ngFor="let p of game.players" [ngClass]="{'active_player' : game.players[game.active_player] == p}">{{ p }}<span *ngIf="player == p"> (Ty)</span>, </span></p>
     </div>
-    <div class="col-6"></div>
     <div class="col-2">
       <img src="{{ turtleCardSrc$ | async }}" (click)="showTurtleCard(game.colors[player])" class="turtlecard"/>
+      <p class="turtlecard" >Kliknij mnie</p>
     </div>
   </div>
   <div class="row">

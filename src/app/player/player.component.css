@@ -6,3 +6,16 @@ img.turtlecard {
   width: 100%;
   cursor: pointer;
 }
+
+p.turtlecard {
+  font-size: small;
+  text-align: center;
+}
+
+p.players {
+  font-size: 150%;
+}
+
+.active_player {
+  border-bottom: 7px solid #d4d800;
+ }
