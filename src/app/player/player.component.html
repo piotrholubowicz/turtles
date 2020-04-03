@@ -1,15 +1,17 @@
 <div *ngIf="game$ | async as game" class="container">
   <div class="row">
-    <div class="col-3">
+    <div class="col-4">
       <p>Gracz: {{player}}</p>
       <p>Kolej gracza: {{game.players[game.active_player]}}</p>
+    </div>
+    <div class="col-4"></div>
+    <div class="col-4">
       <p>Twój kolor: {{ColorT[game.colors[player]]}}</p>
     </div>
-    <div class="col"></div>
   </div>
   <div class="row">
     <div *ngFor="let card of game.hands[player]" class="col">
-      <app-card [card]="card" [game]="game" (played)="onPlayed($event)"></app-card>
+      <app-card [card]="card" [game]="game" [enabled]="game.players[game.active_player]==player" (played)="onPlayed($event)"></app-card>
     </div>
   </div>
 </div>
