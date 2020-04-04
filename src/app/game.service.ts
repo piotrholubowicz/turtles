@@ -14,7 +14,10 @@ export class GameService {
   private gamesUrl = "https://turtles-server.herokuapp.com/games"; // URL to web api
   private games$: Observable<Game[]> = timer(0, 1000).pipe(
     switchMap(_ => this.fetchGames()),  // a new http request on every tick
-    shareReplay(1),  // create a new Subject, which will act as a proxy
+    shareReplay({
+      bufferSize: 1,
+      refCount: true
+    }),  // create a new Subject, which will act as a proxy
   );
   private perGame$ = new Map<number, Observable<Game>>();
   private cache: { [url: string]: string; } = {};  // url => etag
@@ -43,7 +46,10 @@ export class GameService {
     if (!this.perGame$.has(id)) {
       const game$ = timer(0, 1000).pipe(
         switchMap(_ => this.fetchGame(id)),  // a new http request on every tick
-        shareReplay(1),  // create a new Subject, which will act as a proxy
+        shareReplay({
+          bufferSize: 1,
+          refCount: true
+        }),  // create a new Subject, which will act as a proxy
       );
       this.perGame$.set(id, game$);
     }
@@ -56,7 +62,7 @@ export class GameService {
     return this.http.get<Game>(url, { observe: 'response', headers: headers }).pipe(
       tap(resp => this.cache[url] = resp.headers.get('Etag')),
       map(resp => resp.body),
-      catchError(this.handleError<Game>(`getGame id=${id}`))
+      catchError(this.handleError<Game>(`getGame id=${id}`/*, this.perGame$.get(id)*))
     );
   }
 
@@ -106,6 +112,7 @@ export class GameService {
       }
       console.error(error); // log to console instead
       console.log(`${operation} failed: ${error.message}`);
+      delete this.cache[error.url];
       return throwError(error);
     };
   }
