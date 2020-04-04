@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { Color } from '../game';
+import { ImageService } from '../image.service';
 
 @Component({
   selector: 'app-color-picker-dialog',
@@ -16,7 +17,8 @@ export class ColorPickerDialogComponent implements OnInit {
 
   constructor(
     private activeModal: NgbActiveModal,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private imageService: ImageService,
   ) {
     this.createForm();
   }
@@ -29,6 +31,10 @@ export class ColorPickerDialogComponent implements OnInit {
 
   private submitForm() {
     this.activeModal.close(this.colorPickerFormGroup.value);
+  }
+
+  turtleSrc(color: Color): string {
+    return this.imageService.getTurtlePath(color);
   }
 
   ngOnInit() {

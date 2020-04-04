@@ -20,6 +20,10 @@ export class ImageService {
     return `${this.PREFIX}/turtle-card-${which}.png`;
   }
 
+  getTurtlePath(color: Color): string {
+    return `${this.PREFIX}/meeple-${Color[color].toLowerCase()}.png`;
+  }
+
   getTitlePath(): string {
     return `${this.PREFIX}/title.png`;
   }

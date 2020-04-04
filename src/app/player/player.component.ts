@@ -2,7 +2,7 @@ import { Observable, of, merge, timer } from 'rxjs';
 import { switchMap, catchError } from 'rxjs/operators';
 
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute,  ParamMap } from '@angular/router';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { Game, Color, ALL_CARDS } from '../game';

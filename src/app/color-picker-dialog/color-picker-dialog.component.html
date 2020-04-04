@@ -8,11 +8,11 @@
 <form [formGroup]="colorPickerFormGroup" (ngSubmit)="submitForm()">
   <div class="modal-body">
     <div class="container">
-      <div class="form-group">
-        <p>Którego żółwia chcesz przesunąć?</p>
-        <div *ngFor="let color of colors" class="custom-control custom-radio">
-          <input class="custom-control-input" type="radio" name="color" id="{{color}}" value="{{color}}"  formControlName="color" required/>
-          <label class="custom-control-label" for="{{color}}">{{Color[color]}}</label>
+      <p>Którego żółwia chcesz przesunąć?</p>
+      <div class="form-row">
+        <div *ngFor="let color of colors" class="col">
+          <input class="form-check-input" type="radio" name="color" id="{{color}}" value="{{color}}"  formControlName="color" required/>
+          <label class="form-check-label" for="{{color}}"><img style="width: 10%" src="{{turtleSrc(color)}}"/></label>
         </div>
       </div>
     </div>
