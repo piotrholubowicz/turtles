@@ -1,8 +1,8 @@
 import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, catchError } from 'rxjs/operators';
 
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 
 import { Game, Color } from '../game';
 import { GameService } from '../game.service';
@@ -18,13 +18,23 @@ export class BoardComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private service: GameService,
   ) {}
 
   ngOnInit(): void {
     this.game$ = this.route.paramMap.pipe(
-      switchMap((params: ParamMap) =>
-        this.service.getGame(+params.get('id')))
+      switchMap((params: ParamMap) => {
+        return this.service.getGame(+params.get('id')).pipe(
+          catchError(err => {
+            if (err.status == 404) {
+              this.router.navigate(['/games', { message: 'Nie ma takiej gry!' }]);
+            }
+            console.log(`Error ${err.status}`);
+            return this.game$;
+          })
+        )
+      })
     );
   }
 }

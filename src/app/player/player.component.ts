@@ -1,8 +1,8 @@
 import { Observable, of, merge, timer } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, catchError } from 'rxjs/operators';
 
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute,  ParamMap } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { Game, Color, ALL_CARDS } from '../game';
@@ -24,6 +24,7 @@ export class PlayerComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private service: GameService,
     private modalService: NgbModal,
     private imageService: ImageService,
@@ -33,7 +34,15 @@ export class PlayerComponent implements OnInit {
     this.game$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) => {
         this.player = params.get('player');
-        return this.service.getGame(+params.get('id'));
+        return this.service.getGame(+params.get('id')).pipe(
+          catchError(err => {
+            if (err.status == 404) {
+              this.router.navigate(['/games', { message: 'Nie ma takiej gry!' }]);
+            }
+            console.log(`Error ${err.status}`);
+            return this.game$;
+          })
+        );
       })
     );
     this.turtleCardSrc$ = of(this.turtleCardSrc());

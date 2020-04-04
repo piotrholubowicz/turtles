@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
-import { Observable, of, timer, Subject, empty } from "rxjs";
+import { Observable, of, timer, Subject, empty, throwError } from "rxjs";
 import { catchError, map, tap, switchMap, distinctUntilChanged, shareReplay } from "rxjs/operators";
 
 import { Game, Color } from "./game";
@@ -96,17 +96,17 @@ export class GameService {
    * Handle Http operation that failed.
    * Let the app continue.
    * @param operation - name of the operation that failed
-   * @param result - optional value to return as the observable result
+   * @param fallback - optional value to return as the observable result
    */
   private handleError<T>(operation = "operation", fallback: Observable<T> = empty()) {
     return (error: any): Observable<T> => {
       if (error.status == 304) {
         // This is working as intended
-      } else {
-        console.error(error); // log to console instead
-        console.log(`${operation} failed: ${error.message}`);
+        return fallback;
       }
-      return fallback;
+      console.error(error); // log to console instead
+      console.log(`${operation} failed: ${error.message}`);
+      return throwError(error);
     };
   }
 }
