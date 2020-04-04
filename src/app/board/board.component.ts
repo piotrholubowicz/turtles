@@ -48,4 +48,16 @@ export class BoardComponent implements OnInit {
     return this.imageService.getTurtlePath(color);
   }
 
+  left(color: Color): string {
+    return "50%";
+  }
+
+  top(color: Color): string {
+    return "30%";
+  }
+
+  zindex(color: Color): string {
+    return "1";
+  }
+
 }

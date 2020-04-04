@@ -1,5 +1,6 @@
 img.board {
   width: 100%;
+  padding-top: 50px;
 }
 
 p.players {
@@ -11,6 +12,7 @@ span.active_player {
 }
 
 img.meeple {
-  width: %;
+  width: 10%;
   height: auto;
+  position: absolute;
 }

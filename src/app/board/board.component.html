@@ -7,6 +7,11 @@
   <div class="row">
     <div class="col-12">
       <img class="board" src="{{ boardSrc() }}"/>
+      <img class="meeple" src="{{ turtleSrc(Color.GREEN) }}" [style.left]="left(Color.GREEN)" [style.top]="top(Color.GREEN)" [style.z-index]="zindex(Color.GREEN)"/>
+      <img class="meeple" src="{{ turtleSrc(Color.RED) }}" [style.left]="left(Color.RED)" [style.top]="top(Color.RED)" [style.z-index]="zindex(Color.RED)"/>
+      <img class="meeple" src="{{ turtleSrc(Color.YELLOW) }}" [style.left]="left(Color.YELLOW)" [style.top]="top(Color.YELLOW)" [style.z-index]="zindex(Color.YELLOW)"/>
+      <img class="meeple" src="{{ turtleSrc(Color.BLUE) }}" [style.left]="left(Color.BLUE)" [style.top]="top(Color.BLUE)" [style.z-index]="zindex(Color.BLUE)"/>
+      <img class="meeple" src="{{ turtleSrc(Color.PURPLE) }}" [style.left]="left(Color.PURPLE)" [style.top]="top(Color.PURPLE)" [style.z-index]="zindex(Color.GREEN)"/>
     </div>
   </div>
   <div class="row">
@@ -16,7 +21,6 @@
     <div class="col-2">
       played
     </div>
-    <img class="meeple" src="{{ turtleSrc(Color.GREEN) }}"/>
   </div>
 
   <p>Gra <b>{{ game.id }}</b>:</p>
