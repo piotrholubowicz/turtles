@@ -9,8 +9,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 const routes: Routes = [
   { path: '', redirectTo: '/games', pathMatch: 'full' },
   { path: 'games', component: GamesComponent },
-  { path: 'games/:id', component: BoardComponent },
-  { path: 'games/:id/:player', component: PlayerComponent },
+  { path: 'board/:id', component: BoardComponent },
+  { path: 'hand/:id/:player', component: PlayerComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 

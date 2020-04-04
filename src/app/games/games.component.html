@@ -6,7 +6,7 @@
 
 <ul class="heroes">
   <li *ngFor="let game of games$ | async">
-    <a [routerLink]="['/games', game.id]">
+    <a [routerLink]="['/board', game.id]">
       <span class="badge">{{ game.id }}</span>{{ game.players }}
     </a>
     <button class="delete" title="delete game"
