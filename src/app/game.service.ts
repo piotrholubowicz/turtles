@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 import { Observable, of, timer, Subject, empty } from "rxjs";
-import { catchError, map, tap, switchMap, distinctUntilChanged, share } from "rxjs/operators";
+import { catchError, map, tap, switchMap, distinctUntilChanged, shareReplay,  } from "rxjs/operators";
 
 import { Game, Color } from "./game";
 
@@ -14,7 +14,7 @@ export class GameService {
   private gamesUrl = "https://turtles-server.herokuapp.com/games"; // URL to web api
   private games$: Observable<Game[]> = timer(0, 1000).pipe(
     switchMap(_ => this.fetchGames()),  // a new http request on every tick
-    share(),  // create a new Subject, which will act as a proxy
+    shareReplay(1),  // create a new Subject, which will act as a proxy
   );
   private perGame$ = new Map<number, Observable<Game>>();
   private cache: { [url: string]: string; } = {};  // url => etag
@@ -43,7 +43,7 @@ export class GameService {
     if (!this.perGame$.has(id)) {
       const game$ = timer(0, 1000).pipe(
         switchMap(_ => this.fetchGame(id)),  // a new http request on every tick
-        share(),  // create a new Subject, which will act as a proxy
+        shareReplay(1),  // create a new Subject, which will act as a proxy
       );
       this.perGame$.set(id, game$);
     }
