@@ -32,4 +32,8 @@ export class ImageService {
     return `${this.PREFIX}/yourturn.png`;
   }
 
+  getBoardPath(): string {
+    return `${this.PREFIX}/board.png`;
+  }
+
 }

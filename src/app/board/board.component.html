@@ -1,4 +1,12 @@
 <div *ngIf="game$ | async as game">
+  <div class="row">
+    <div class="col-10">
+      board
+    </div>
+    <div class="col-2">
+      cards
+    </div>
+  </div>
 
   <p>Gra <b>{{ game.id }}</b>:</p>
 
@@ -7,7 +15,7 @@
   </p>
   <p>Kart w talii: {{ game.deck.length }}</p>
   <p>Kart zagranych: {{ game.discarded.length }}</p>
-  <p>Ostatni ruch: {{Color[game.last_move.color]}} z {{game.last_move.start}} do {{game.last_move.end}}</p>
+  <p *ngIf="game.last_move">Ostatni ruch: {{Color[game.last_move.color]}} z {{game.last_move.start}} do {{game.last_move.end}}</p>
   <p *ngFor="let player of game.players">
     <a [routerLink]="['/games', game.id, player]">{{player}}</a>
   </p>

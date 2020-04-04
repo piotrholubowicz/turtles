@@ -6,6 +6,7 @@ import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 
 import { Game, Color } from '../game';
 import { GameService } from '../game.service';
+import { ImageService } from '../image.service';
 
 @Component({
   selector: 'app-board',
@@ -20,6 +21,7 @@ export class BoardComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private service: GameService,
+    private imageService: ImageService,
   ) {}
 
   ngOnInit(): void {
@@ -37,4 +39,9 @@ export class BoardComponent implements OnInit {
       })
     );
   }
+
+  getBoardPath(): string {
+    return this.imageService.
+  }
+
 }
