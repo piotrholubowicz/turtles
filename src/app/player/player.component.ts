@@ -84,7 +84,7 @@ export class PlayerComponent implements OnInit {
   }
 
   yourTurnSrc(): string {
-    return this.imageService.getTYourTurnPath();
+    return this.imageService.getYourTurnPath();
   }
 
 }
