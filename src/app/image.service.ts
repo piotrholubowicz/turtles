@@ -16,7 +16,7 @@ export class ImageService {
   }
 
   getTurtleCardPath(color?: Color): string {
-    let which = color ? Color[color].toLowerCase() : 'back';
+    let which = color !== undefined ? Color[color].toLowerCase() : 'back';
     return `${this.PREFIX}/turtle-card-${which}.png`;
   }
 

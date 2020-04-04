@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 import { Observable, of, timer, Subject, empty } from "rxjs";
-import { catchError, map, tap, switchMap, distinctUntilChanged, shareReplay,  } from "rxjs/operators";
+import { catchError, map, tap, switchMap, distinctUntilChanged, shareReplay } from "rxjs/operators";
 
 import { Game, Color } from "./game";
 
