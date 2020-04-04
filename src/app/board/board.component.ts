@@ -41,7 +41,7 @@ export class BoardComponent implements OnInit {
   }
 
   getBoardPath(): string {
-    return this.imageService.
+    return this.imageService.getBoardPath();
   }
 
 }
