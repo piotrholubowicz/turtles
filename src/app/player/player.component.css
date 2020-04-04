@@ -16,6 +16,6 @@ p.players {
   font-size: 150%;
 }
 
-.active_player {
+span.active_player {
   border-bottom: 7px solid #d4d800;
- }
+}

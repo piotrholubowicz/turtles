@@ -40,8 +40,12 @@ export class BoardComponent implements OnInit {
     );
   }
 
-  getBoardPath(): string {
+  boardSrc(): string {
     return this.imageService.getBoardPath();
+  }
+
+  turtleSrc(color: Color): string {
+    return this.imageService.getTurtlePath(color);
   }
 
 }

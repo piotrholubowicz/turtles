@@ -1,20 +1,22 @@
 <div *ngIf="game$ | async as game">
   <div class="row">
-    <div class="col-10">
-      <img class="board" src="{{getBoardSr()}}"/>
+    <div class="col">
+      <p class="players"><span *ngFor="let p of game.players" [ngClass]="{'active_player' : game.players[game.active_player] == p}">{{ p }}<span *ngIf="player == p"> (Ty)</span>, </span></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <img class="board" src="{{ boardSrc() }}"/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      deck
     </div>
     <div class="col-2">
-      <div class="row">
-        <div class="col">
-          deck
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          played
-        </div>
-      </div>
+      played
     </div>
+    <img class="meeple" src="{{ turtleSrc(Color.GREEN) }}"/>
   </div>
 
   <p>Gra <b>{{ game.id }}</b>:</p>

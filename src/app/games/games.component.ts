@@ -15,6 +15,7 @@ import { GameEngine }  from '../game-engine';
 })
 export class GamesComponent implements OnInit {
   games$: Observable<Game[]>;
+  message: string;
 
   constructor(
     private service: GameService,
@@ -24,6 +25,7 @@ export class GamesComponent implements OnInit {
   ngOnInit() {
     this.games$ = this.route.paramMap.pipe(
       switchMap(params => {
+        this.message = params.get('message');
         return this.service.getGames();
       })
     );

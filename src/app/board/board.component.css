@@ -1,3 +1,16 @@
 img.board {
   width: 100%;
 }
+
+p.players {
+  font-size: 100%;
+}
+
+span.active_player {
+  border-bottom: 5px solid #d4d800;
+}
+
+img.meeple {
+  width: %;
+  height: auto;
+}
