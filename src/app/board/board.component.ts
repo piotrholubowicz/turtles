@@ -1,13 +1,15 @@
 import { Observable } from 'rxjs';
-import { switchMap, catchError } from 'rxjs/operators';
+import { switchMap, catchError, tap } from 'rxjs/operators';
 
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { Game, Color } from '../game';
 import { GameEngine }  from '../game-engine';
 import { GameService } from '../game.service';
 import { ImageService } from '../image.service';
+import { GameOverComponent } from '../game-over/game-over.component';
 
 @Component({
   selector: 'app-board',
@@ -24,12 +26,19 @@ export class BoardComponent implements OnInit {
     private router: Router,
     private service: GameService,
     private imageService: ImageService,
+    private modalService: NgbModal,
   ) {}
 
   ngOnInit(): void {
     this.game$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) => {
         return this.service.getGame(+params.get('id')).pipe(
+          tap(game => {
+            if (game.winner) {
+              console.log('game overX');
+              this.gameOver(game);
+            }
+          }),
           catchError(err => {
             if (err.status == 404) {
               this.router.navigate(['/games', { message: 'Nie ma takiej gry!' }]);
@@ -84,6 +93,13 @@ export class BoardComponent implements OnInit {
     }
 
     return `${10*z[fieldAndPos[0]]+fieldAndPos[1]}`;
+  }
+
+  gameOver(game: Game): Promise<any> {
+      const modalRef = this.modalService.open(GameOverComponent);
+      modalRef.componentInstance.winner = game.winner;
+      modalRef.componentInstance.color = game.colors[game.winner];
+      return modalRef.result;
   }
 
 }

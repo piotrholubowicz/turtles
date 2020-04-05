@@ -1,0 +1,28 @@
+<div class="modal-header">
+  <h4 class="modal-title">Koniec gry</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <p>Wygrał {{ winner }}!</p>
+      </div>
+  </div>
+  <div class="row">
+    <div class="col"></div>
+    <div class="col-4">
+      <img src="{{ turtleCardSrc() }}" class="turtlecard"/>
+    </div>
+    <div class="col"></div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button class="btn btn-success" (click)="activeModal.close('OK')">
+    OK
+  </button>
+</div>

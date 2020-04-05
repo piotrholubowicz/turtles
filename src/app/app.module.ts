@@ -20,6 +20,7 @@ import { CardComponent } from './card/card.component';
 import { ColorPickerDialogComponent } from './color-picker-dialog/color-picker-dialog.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ImageService } from './image.service';
+import { GameOverComponent } from './game-over/game-over.component';
 
 @NgModule({
   imports:      [ 
@@ -38,9 +39,9 @@ import { ImageService } from './image.service';
     // )
 
    ],
-  declarations: [ AppComponent, GamesComponent, BoardComponent, PlayerComponent, CardComponent, ColorPickerDialogComponent, PageNotFoundComponent ],
+  declarations: [ AppComponent, GamesComponent, BoardComponent, PlayerComponent, CardComponent, ColorPickerDialogComponent, PageNotFoundComponent, GameOverComponent ],
   bootstrap:    [ AppComponent ],
   providers: [{provide: APP_BASE_HREF, useValue: '/'}, GameService, InMemoryDataService, ImageService],
-  entryComponents: [ColorPickerDialogComponent]
+  entryComponents: [ColorPickerDialogComponent, GameOverComponent]
 })
 export class AppModule { }
