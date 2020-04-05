@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { switchMap, catchError, tap } from 'rxjs/operators';
 
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -20,6 +20,7 @@ export class BoardComponent implements OnInit {
   game$: Observable<Game>;
   allColors: Color[] = [Color.RED, Color.YELLOW, Color.BLUE, Color.PURPLE, Color.GREEN];
   Color = Color;
+  @Output() fluidContainer = new EventEmitter<boolean>();
 
   constructor(
     private route: ActivatedRoute,
@@ -35,7 +36,6 @@ export class BoardComponent implements OnInit {
         return this.service.getGame(+params.get('id')).pipe(
           tap(game => {
             if (game.winner) {
-              console.log('game overX');
               this.gameOver(game);
             }
           }),
@@ -49,6 +49,7 @@ export class BoardComponent implements OnInit {
         )
       })
     );
+    this.fluidContainer.emit(true);
   }
 
   boardSrc(): string {

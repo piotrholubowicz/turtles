@@ -1,4 +1,4 @@
-<div class="container">
+<div [className]="containerClass$ | async">
   <div class="row">
     <div class="col">
       <a href="/"><img src="{{ titleSrc() }}"/></a>
@@ -6,7 +6,7 @@
   </div>
   <div class="row">
     <div class="col">
-      <router-outlet></router-outlet>
+      <router-outlet (fluidContainer)="onFluidContainer($event)"></router-outlet>
     </div>
   </div>
 </div>

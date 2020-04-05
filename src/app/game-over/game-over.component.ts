@@ -22,7 +22,6 @@ export class GameOverComponent implements OnInit {
   }
 
   turtleCardSrc(): string {
-    console.log(this.color);
     return this.imageService.getTurtleCardPath(this.color);
   }
 
