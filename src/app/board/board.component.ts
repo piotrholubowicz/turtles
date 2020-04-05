@@ -5,6 +5,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 
 import { Game, Color } from '../game';
+import { GameEngine }  from '../game-engine';
 import { GameService } from '../game.service';
 import { ImageService } from '../image.service';
 
@@ -15,6 +16,7 @@ import { ImageService } from '../image.service';
 })
 export class BoardComponent implements OnInit {
   game$: Observable<Game>;
+  allColors: Color[] = [Color.RED, Color.YELLOW, Color.BLUE, Color.PURPLE, Color.GREEN];
   Color = Color;
 
   constructor(
@@ -48,16 +50,25 @@ export class BoardComponent implements OnInit {
     return this.imageService.getTurtlePath(color);
   }
 
-  left(color: Color): string {
-    return "50%";
+  left(game: Game, color: Color): string {
+    let x = [80, 76, 67, 58, 50, 41, 32, 25, 15, 8];
+    let fieldAndPos = GameEngine.findPosition(game, color);
+    return `${x[fieldAndPos[0]]}%`;
   }
 
-  top(color: Color): string {
-    return "30%";
+  top(game: Game, color: Color): string {
+    let y = [25, 50, 57, 51, 34, 27, 40, 57, 49, 35];
+    let fieldAndPos = GameEngine.findPosition(game, color);
+    let field = fieldAndPos[0];
+    let pos = fieldAndPos[1];
+    // height of a meeple is 5%
+    return `${y[field] - pos*5}%`;
   }
 
-  zindex(color: Color): string {
-    return "1";
+  zindex(game: Game, color: Color): string {
+    let z = [0, 1, 2, 3, 2, 1, 2, 3, 2, 1];
+    let fieldAndPos = GameEngine.findPosition(game, color);
+    return `${10*z[fieldAndPos[0]]+fieldAndPos[1]}`;
   }
 
 }
