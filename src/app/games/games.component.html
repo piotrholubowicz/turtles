@@ -1,67 +1,76 @@
-<div class="row">
-  <div class="col">
-    <!-- <h1>Pędzące Żółwie</h1> -->
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <a href="/"><img src="https://raw.githubusercontent.com/piotrholubowicz/turtles/master/src/assets/img/title.png"/></a>
+    </div>
   </div>
-</div>
+  <div class="row">
+    <div class="col">
+      <!-- <h1>Pędzące Żółwie</h1> -->
+    </div>
+  </div>
 
-<div class="row">
-  <div class="col-6">
-    <div class="row">
-      <div class="col-10">
-        <h2>Istniejące gry</h2>
-        <div *ngFor="let game of games$ | async" class="btn-group" role="group" style="width: 100%; margin-top:5%;">
-          <div class="input-group-prepend">
-            <div class="input-group-text">{{ game.id }}</div>
+  <div class="row">
+    <div class="col-6">
+      <div class="row">
+        <div class="col-10">
+          <h2>Istniejące gry</h2>
+          <div *ngFor="let game of games$ | async" class="btn-group" role="group" style="width: 100%; margin-top:5%;">
+            <div class="input-group-prepend">
+              <div class="input-group-text">{{ game.id }}</div>
+            </div>
+            <button type="button" class="btn btn-light game" [routerLink]="['/board', game.id]" style="width: 80%;">{{ game.players.join(', ') }}</button>
+            <button type="button" class="btn btn-secondary" title="delete game"
+                (click)="delete(game)">x</button>
           </div>
-          <button type="button" class="btn btn-light game" [routerLink]="['/board', game.id]" style="width: 80%;">{{ game.players.join(', ') }}</button>
-          <button type="button" class="btn btn-secondary" title="delete game"
-              (click)="delete(game)">x</button>
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-6">
-    <h2>Nowa gra</h2>
-    <form>
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Gracz 1</label>
-        <div class="col-10">
-          <input class="form-control" #player1 />
+    <div class="col-6">
+      <h2>Nowa gra</h2>
+      <form>
+        <div class="form-group row">
+          <label class="col-2 col-form-label">Gracz 1</label>
+          <div class="col-10">
+            <input class="form-control" #player1 />
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Gracz 2</label>
-        <div class="col-10">
-          <input class="form-control" #player2 />
+        <div class="form-group row">
+          <label class="col-2 col-form-label">Gracz 2</label>
+          <div class="col-10">
+            <input class="form-control" #player2 />
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Gracz 3</label>
-        <div class="col-10">
-          <input class="form-control" #player3 />
+        <div class="form-group row">
+          <label class="col-2 col-form-label">Gracz 3</label>
+          <div class="col-10">
+            <input class="form-control" #player3 />
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Gracz 4</label>
-        <div class="col-10">
-          <input class="form-control" #player4 />
+        <div class="form-group row">
+          <label class="col-2 col-form-label">Gracz 4</label>
+          <div class="col-10">
+            <input class="form-control" #player4 />
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Gracz 5</label>
-        <div class="col-10">
-          <input class="form-control" #player5 />
+        <div class="form-group row">
+          <label class="col-2 col-form-label">Gracz 5</label>
+          <div class="col-10">
+            <input class="form-control" #player5 />
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <!-- (click) passes input value to add() and then clears the input -->
-        <button type="submit" class="btn btn-light" (click)="add([player1.value,player2.value,player3.value,player4.value,player5.value]); player1.value=''; player2.value=''; player3.value=''; player4.value=''; player5.value=''">
-          Nowa gra
-        </button>
-      </div>
-    </form>
+        <div class="form-group row">
+          <!-- (click) passes input value to add() and then clears the input -->
+          <button type="submit" class="btn btn-light" (click)="add([player1.value,player2.value,player3.value,player4.value,player5.value]); player1.value=''; player2.value=''; player3.value=''; player4.value=''; player5.value=''">
+            Nowa gra
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
+
+
 
 <!-- <div *ngIf="message" class="alert alert-warning">{{ message }}</div> -->
 

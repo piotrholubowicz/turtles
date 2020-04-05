@@ -1,30 +1,38 @@
-<div *ngIf="game$ | async as game">
+<div class="container-fluid">
   <div class="row">
     <div class="col">
-      <p class="players"><span *ngFor="let p of game.players" [ngClass]="{'active_player' : game.players[game.active_player] == p}">{{ p }}<span *ngIf="player == p"> (Ty)</span>, </span></p>
+      <a href="/"><img src="https://raw.githubusercontent.com/piotrholubowicz/turtles/master/src/assets/img/title.png"/></a>
     </div>
   </div>
-  <div class="row">
-    <div class="col-12">
-      <img class="board" src="{{ boardSrc() }}"/>
-      <img *ngFor="let c of allColors" class="meeple" src="{{ turtleSrc(c) }}" [style.left]="left(game, c)" [style.top]="top(game, c)" [style.z-index]="zindex(game, c)"/>
+  <div *ngIf="game$ | async as game">
+    <div class="row">
+      <div class="col">
+        <p class="players"><span *ngFor="let p of game.players" [ngClass]="{'active_player' : game.players[game.active_player] == p}">{{ p }}<span *ngIf="player == p"> (Ty)</span>, </span></p>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-2">
-      deck
+    <div class="row">
+      <div class="col-12">
+        <img class="board" src="{{ boardSrc() }}"/>
+        <img *ngFor="let c of allColors" class="meeple" src="{{ turtleSrc(c) }}" [style.left]="left(game, c)" [style.top]="top(game, c)" [style.z-index]="zindex(game, c)"/>
+      </div>
     </div>
-    <div class="col-2">
-      played
+    <div class="row">
+      <div class="col-2">
+        deck
+      </div>
+      <div class="col-2">
+        played
+      </div>
     </div>
-  </div>
 
-  <p>Gra <b>{{ game.id }}</b>:</p>
+    <p>Gra <b>{{ game.id }}</b>:</p>
 
-  <p>Kart w talii: {{ game.deck.length }}</p>
-  <p>Kart zagranych: {{ game.discarded.length }}</p>
-  <p *ngIf="game.last_move">Ostatni ruch: {{Color[game.last_move.color]}} z {{game.last_move.start}} do {{game.last_move.end}}</p>
-  <p *ngFor="let player of game.players">
-    <a [routerLink]="['/hand', game.id, player]">{{player}}</a>
-  </p>
+    <p>Kart w talii: {{ game.deck.length }}</p>
+    <p>Kart zagranych: {{ game.discarded.length }}</p>
+    <p *ngIf="game.last_move">Ostatni ruch: {{Color[game.last_move.color]}} z {{game.last_move.start}} do {{game.last_move.end}}</p>
+    <p *ngFor="let player of game.players">
+      <a [routerLink]="['/hand', game.id, player]">{{player}}</a>
+    </p>
+  </div>
 </div>
+
