@@ -53,14 +53,24 @@ export class BoardComponent implements OnInit {
   left(game: Game, color: Color): string {
     let x = [80, 76, 67, 58, 50, 41, 32, 25, 15, 8];
     let fieldAndPos = GameEngine.findPosition(game, color);
+
+    if (fieldAndPos[0] == 0) {
+      return `${x[0] + 1.7*color}%`;
+    }
+
     return `${x[fieldAndPos[0]]}%`;
   }
 
   top(game: Game, color: Color): string {
-    let y = [25, 50, 57, 51, 34, 27, 40, 57, 49, 35];
+    let y = [20, 50, 57, 51, 34, 27, 40, 57, 49, 35];
     let fieldAndPos = GameEngine.findPosition(game, color);
     let field = fieldAndPos[0];
     let pos = fieldAndPos[1];
+
+    if (field == 0) {
+      return `${y[0] + 15*color}%`;
+    }
+
     // height of a meeple is 5%
     return `${y[field] - pos*5}%`;
   }
@@ -68,6 +78,11 @@ export class BoardComponent implements OnInit {
   zindex(game: Game, color: Color): string {
     let z = [0, 1, 2, 3, 2, 1, 2, 3, 2, 1];
     let fieldAndPos = GameEngine.findPosition(game, color);
+
+    if (fieldAndPos[0] == 0) {
+      return `${color}`;
+    }
+
     return `${10*z[fieldAndPos[0]]+fieldAndPos[1]}`;
   }
 
