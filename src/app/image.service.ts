@@ -9,7 +9,10 @@ export class ImageService {
 
   constructor() { }
 
-  getMoveCardPath(card: Card): string {
+  getMoveCardPath(card?: Card): string {
+    if (!card) {
+      return `${this.PREFIX}/card-back.png`;
+    }
     let color = Color[card.color].toLowerCase();
     let sign = card.distance == -1 ? 'minus' : (card.distance == 2 ? 'plusplus' : 'plus');
     return `${this.PREFIX}/card-${color}-${sign}.png`;

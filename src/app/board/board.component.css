@@ -16,3 +16,9 @@ img.meeple {
   height: auto;
   position: absolute;
 }
+
+img.movecard {
+  width: 10%;
+  height: auto;
+  position: absolute;
+}

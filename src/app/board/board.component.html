@@ -17,15 +17,13 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-2">
-        deck
+      <div class="col-6">
+        <img *ngFor="let card of game.deck; let i = index" class="movecard" src="{{ cardBackSrc() }}" [style.left]="leftMoveCard(i)"/>
       </div>
-      <div class="col-2">
-        played
+      <div class="col-6">
+        <img *ngFor="let card of game.discarded; let i = index" class="movecard" src="{{ cardFrontSrc(card) }}" [style.left]="leftMoveCard(i)"/>
       </div>
     </div>
-
-    <p>Gra <b>{{ game.id }}</b>:</p>
 
     <p>Kart w talii: {{ game.deck.length }}</p>
     <p>Kart zagranych: {{ game.discarded.length }}</p>

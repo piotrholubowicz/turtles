@@ -5,7 +5,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { Game, Color } from '../game';
+import { Game, Color, Card, ALL_CARDS } from '../game';
 import { GameEngine }  from '../game-engine';
 import { GameService } from '../game.service';
 import { ImageService } from '../image.service';
@@ -99,6 +99,18 @@ export class BoardComponent implements OnInit {
       modalRef.componentInstance.winner = game.winner;
       modalRef.componentInstance.color = game.colors[game.winner];
       return modalRef.result;
+  }
+
+  cardBackSrc(): string {
+    return this.imageService.getMoveCardPath();
+  }
+
+  cardFrontSrc(card: Card): string {
+    return this.imageService.getMoveCardPath(ALL_CARDS[card]);
+  }
+
+  leftMoveCard(i: number): string {
+    return `${20+i}%`;
   }
 
 }
