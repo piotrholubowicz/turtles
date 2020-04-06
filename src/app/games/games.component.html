@@ -4,25 +4,25 @@
       <a href="/"><img src="https://raw.githubusercontent.com/piotrholubowicz/turtles/master/src/assets/img/title.png"/></a>
     </div>
   </div>
-  <div class="row">
-    <div class="col">
-      <!-- <h1>Pędzące Żółwie</h1> -->
-    </div>
-  </div>
 
   <div class="row">
     <div class="col-6">
       <div class="row">
         <div class="col-10">
           <h2>Istniejące gry</h2>
-          <div *ngFor="let game of games$ | async" class="btn-group" role="group" style="width: 100%; margin-top:5%;">
-            <div class="input-group-prepend">
-              <div class="input-group-text">{{ game.id }}</div>
+          <div *ngIf="(games$ | async)?.length > 0; else noGames">
+            <div *ngFor="let game of games$ | async" class="btn-group" role="group" style="width: 100%; margin-top:5%;">
+              <div class="input-group-prepend">
+                <div class="input-group-text">{{ game.id }}</div>
+              </div>
+              <button type="button" class="btn btn-light game" [routerLink]="['/board', game.id]" style="width: 80%;">{{ game.players.join(', ') }}</button>
+              <button type="button" class="btn btn-secondary" title="delete game"
+                  (click)="delete(game)">x</button>
             </div>
-            <button type="button" class="btn btn-light game" [routerLink]="['/board', game.id]" style="width: 80%;">{{ game.players.join(', ') }}</button>
-            <button type="button" class="btn btn-secondary" title="delete game"
-                (click)="delete(game)">x</button>
           </div>
+          <ng-template #noGames>
+            <p>Nie ma gier.</p>
+          </ng-template>
         </div>
       </div>
     </div>
