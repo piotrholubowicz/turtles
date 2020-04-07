@@ -14,7 +14,7 @@ import { GameOverComponent } from '../game-over/game-over.component';
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
-  styleUrls: ['./board.component.css']
+  styleUrls: ['./board.component.css'],
 })
 export class BoardComponent implements OnInit {
   game$: Observable<Game>;
@@ -33,12 +33,21 @@ export class BoardComponent implements OnInit {
     this.game$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) => {
         return this.service.getGame(+params.get('id')).pipe(
-          tap(game => {
+          tap((game) => {
             if (game.winner) {
-              this.gameOver(game);
+              this.gameOver(game).then((result) => {
+                if (result === 'onemore') {
+                  console.log('once more!');
+                  this.service
+                    .addGame(GameEngine.createGame(GameEngine.shuffle([...game.players])))
+                    .subscribe((newGame) => {
+                      this.router.navigate(['/board', newGame.id]);
+                    });
+                }
+              });
             }
           }),
-          catchError(err => {
+          catchError((err) => {
             if (err.status === 404) {
               this.router.navigate(['/games', { message: 'Nie ma takiej gry!' }]);
             }

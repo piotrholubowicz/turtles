@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col">
-      <a href="/"><img src="/assets/img/title.png"/></a>
+      <a href="/"><img src="/assets/img/title.png" /></a>
     </div>
   </div>
   <div *ngIf="game$ | async as game">
@@ -46,13 +46,13 @@
       </div>
     </div>
 
-    <button
+    <a
       *ngFor="let player of game.players"
       type="button"
       class="btn btn-secondary btn-player"
       [routerLink]="['/hand', game.id, player]"
     >
       {{ player }}
-    </button>
+    </a>
   </div>
 </div>

@@ -21,14 +21,14 @@
             required
           />
           <label class="form-check-label" for="{{ color }}"
-            ><img style="width: 80%" src="{{ turtleSrc(color) }}"
+            ><img style="width: 80%;" src="{{ turtleSrc(color) }}"
           /></label>
         </div>
       </div>
     </div>
   </div>
   <div class="modal-footer">
-    <button class="btn btn-success" [disabled]="!colorPickerFormGroup.valid">
+    <button class="btn btn-primary" [disabled]="!colorPickerFormGroup.valid">
       OK
     </button>
   </div>
