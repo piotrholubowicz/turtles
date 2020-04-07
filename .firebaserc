@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "turtles-c2d65": {
+      "hosting": {
+        "turtles": [
+          "turtles-c2d65"
+        ]
+      }
+    }
+  }
+}

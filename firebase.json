@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "turtles",
+      "public": "dist/turtles",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}
