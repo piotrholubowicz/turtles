@@ -105,8 +105,8 @@ export class BoardComponent implements OnInit {
     return this.imageService.getMoveCardPath();
   }
 
-  cardFrontSrc(card: Card): string {
-    return this.imageService.getMoveCardPath(ALL_CARDS[card]);
+  cardFrontSrc(cardIdx: number): string {
+    return this.imageService.getMoveCardPath(ALL_CARDS[cardIdx]);
   }
 
   leftMoveCard(i: number): string {
