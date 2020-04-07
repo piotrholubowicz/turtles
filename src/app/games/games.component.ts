@@ -4,9 +4,9 @@ import { switchMap } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { GameService }  from '../game.service';
+import { GameService } from '../game.service';
 import { Game } from '../game';
-import { GameEngine }  from '../game-engine';
+import { GameEngine } from '../game-engine';
 
 @Component({
   selector: 'app-game-list',
@@ -17,10 +17,7 @@ export class GamesComponent implements OnInit {
   games$: Observable<Game[]>;
   message: string;
 
-  constructor(
-    private service: GameService,
-    private route: ActivatedRoute
-  ) { }
+  constructor(private service: GameService, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.games$ = this.route.paramMap.pipe(
@@ -32,13 +29,14 @@ export class GamesComponent implements OnInit {
   }
 
   add(playersInput: string[]): void {
-    let players = playersInput.filter(input => input != '');
-    if (players.length < 2) { return; }
+    const players = playersInput.filter(input => input !== '');
+    if (players.length < 2) {
+      return;
+    }
     this.service.addGame(GameEngine.createGame(players)).subscribe();
   }
 
   delete(game: Game): void {
     this.service.deleteGame(game).subscribe();
   }
-
 }

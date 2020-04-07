@@ -11,18 +11,14 @@ import { Game, Card, Color, ALL_CARDS } from '../game';
 })
 export class CardComponent implements OnInit {
   @Input() game: Game;
-  @Input('card') cardIdx: number;
+  @Input() cardIdx: number;
   @Input() enabled: boolean;
-  @Output() played = new EventEmitter<{cardIdx: number, game: Game}>();
+  @Output() played = new EventEmitter<{ cardIdx: number; game: Game }>();
   Color = Color;
 
-  constructor(
-    private modalService: NgbModal,
-    private imageService: ImageService
-  ) { }
+  constructor(private modalService: NgbModal, private imageService: ImageService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   card(): Card {
     return ALL_CARDS[this.cardIdx];
@@ -30,12 +26,11 @@ export class CardComponent implements OnInit {
 
   play(): void {
     if (this.enabled) {
-      this.played.emit({cardIdx: this.cardIdx, game: this.game});
+      this.played.emit({ cardIdx: this.cardIdx, game: this.game });
     }
   }
 
   src(): string {
     return this.imageService.getMoveCardPath(ALL_CARDS[this.cardIdx]);
   }
-
 }

@@ -13,16 +13,11 @@ export class GameOverComponent implements OnInit {
   @Input() winner: string;
   @Input() color: Color;
 
-  constructor(
-    public activeModal: NgbActiveModal,
-    private imageService: ImageService,
-  ) {}
+  constructor(public activeModal: NgbActiveModal, private imageService: ImageService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   turtleCardSrc(): string {
     return this.imageService.getTurtleCardPath(this.color);
   }
-
 }

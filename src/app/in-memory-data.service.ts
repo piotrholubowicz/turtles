@@ -3,13 +3,13 @@ import { Game } from './game';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const games = [];
-    console.log("created the db")
-    return {games};
+    console.log('created the db');
+    return { games };
   }
 
   // Overrides the genId method to ensure that a game always has an id.

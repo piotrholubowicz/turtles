@@ -11,18 +11,19 @@
       <div class="col">
         <p>Wygrał {{ winner }}!</p>
       </div>
-  </div>
-  <div class="row">
-    <div class="col"></div>
-    <div class="col-4">
-      <img src="{{ turtleCardSrc() }}" class="turtlecard"/>
     </div>
-    <div class="col"></div>
+    <div class="row">
+      <div class="col"></div>
+      <div class="col-4">
+        <img src="{{ turtleCardSrc() }}" class="turtlecard" />
+      </div>
+      <div class="col"></div>
+    </div>
   </div>
-</div>
 
-<div class="modal-footer">
-  <button class="btn btn-success" (click)="activeModal.close('OK')">
-    OK
-  </button>
+  <div class="modal-footer">
+    <button class="btn btn-success" (click)="activeModal.close('OK')">
+      OK
+    </button>
+  </div>
 </div>

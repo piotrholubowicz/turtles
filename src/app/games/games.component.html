@@ -1,7 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <a href="/"><img src="https://raw.githubusercontent.com/piotrholubowicz/turtles/master/src/assets/img/title.png"/></a>
+      <a href="/"
+        ><img src="https://raw.githubusercontent.com/piotrholubowicz/turtles/master/src/assets/img/title.png"
+      /></a>
     </div>
   </div>
 
@@ -15,9 +17,10 @@
               <div class="input-group-prepend">
                 <div class="input-group-text">{{ game.id }}</div>
               </div>
-              <button type="button" class="btn btn-light game" [routerLink]="['/board', game.id]" style="width: 80%;">{{ game.players.join(', ') }}</button>
-              <button type="button" class="btn btn-secondary" title="delete game"
-                  (click)="delete(game)">x</button>
+              <button type="button" class="btn btn-light game" [routerLink]="['/board', game.id]" style="width: 80%;">
+                {{ game.players.join(', ') }}
+              </button>
+              <button type="button" class="btn btn-secondary" title="delete game" (click)="delete(game)">x</button>
             </div>
           </div>
           <ng-template #noGames>
@@ -61,7 +64,18 @@
         </div>
         <div class="form-group row">
           <!-- (click) passes input value to add() and then clears the input -->
-          <button type="submit" class="btn btn-light" (click)="add([player1.value,player2.value,player3.value,player4.value,player5.value]); player1.value=''; player2.value=''; player3.value=''; player4.value=''; player5.value=''">
+          <button
+            type="submit"
+            class="btn btn-light"
+            (click)="
+              add([player1.value, player2.value, player3.value, player4.value, player5.value]);
+              player1.value = '';
+              player2.value = '';
+              player3.value = '';
+              player4.value = '';
+              player5.value = ''
+            "
+          >
             Nowa gra
           </button>
         </div>
@@ -70,7 +84,4 @@
   </div>
 </div>
 
-
-
 <!-- <div *ngIf="message" class="alert alert-warning">{{ message }}</div> -->
-

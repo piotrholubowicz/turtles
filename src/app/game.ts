@@ -9,7 +9,7 @@ export enum Color {
 }
 
 export interface Card {
-  distance: number;  // 1-2
+  distance: number; // 1-2
   color: Color;
 }
 
@@ -22,8 +22,8 @@ export interface Move {
 export interface Game {
   id: number;
   players: string[];
-  colors: { [id: string]: Color; };
-  hands: { [id: string]: number[]; }
+  colors: { [id: string]: Color };
+  hands: { [id: string]: number[] };
   deck: number[];
   discarded: number[];
   board: Color[][];
@@ -90,5 +90,5 @@ export const ALL_CARDS = [
   { distance: 1, color: Color.LAST },
   { distance: 1, color: Color.LAST },
   { distance: 2, color: Color.LAST },
-  { distance: 2, color: Color.LAST },
-]
+  { distance: 2, color: Color.LAST }
+];

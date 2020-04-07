@@ -18,14 +18,14 @@ export class ColorPickerDialogComponent implements OnInit {
   constructor(
     public activeModal: NgbActiveModal,
     private formBuilder: FormBuilder,
-    private imageService: ImageService,
+    private imageService: ImageService
   ) {
     this.createForm();
   }
 
   private createForm() {
     this.colorPickerFormGroup = this.formBuilder.group({
-      color: ['', [Validators.required]],
+      color: ['', [Validators.required]]
     });
   }
 
@@ -37,7 +37,5 @@ export class ColorPickerDialogComponent implements OnInit {
     return this.imageService.getTurtlePath(color);
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

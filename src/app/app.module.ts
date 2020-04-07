@@ -23,13 +23,13 @@ import { ImageService } from './image.service';
 import { GameOverComponent } from './game-over/game-over.component';
 
 @NgModule({
-  imports:      [ 
+  imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
-    NgbModule,
+    NgbModule
 
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
@@ -37,11 +37,19 @@ import { GameOverComponent } from './game-over/game-over.component';
     // HttpClientInMemoryWebApiModule.forRoot(
     //   InMemoryDataService, { dataEncapsulation: false }
     // )
-
-   ],
-  declarations: [ AppComponent, GamesComponent, BoardComponent, PlayerComponent, CardComponent, ColorPickerDialogComponent, PageNotFoundComponent, GameOverComponent ],
-  bootstrap:    [ AppComponent ],
-  providers: [{provide: APP_BASE_HREF, useValue: '/'}, GameService, InMemoryDataService, ImageService],
+  ],
+  declarations: [
+    AppComponent,
+    GamesComponent,
+    BoardComponent,
+    PlayerComponent,
+    CardComponent,
+    ColorPickerDialogComponent,
+    PageNotFoundComponent,
+    GameOverComponent
+  ],
+  bootstrap: [AppComponent],
+  providers: [{ provide: APP_BASE_HREF, useValue: '/' }, GameService, InMemoryDataService, ImageService],
   entryComponents: [ColorPickerDialogComponent, GameOverComponent]
 })
-export class AppModule { }
+export class AppModule {}
