@@ -7,7 +7,7 @@
   <div *ngIf="game$ | async as game">
     <div class="row">
       <div class="col">
-        <p class="players"><span *ngFor="let p of game.players" [ngClass]="{'active_player' : game.players[game.active_player] == p}">{{ p }}<span *ngIf="player == p"> (Ty)</span>, </span></p>
+        <p class="players"><span *ngFor="let p of game.players" [ngClass]="{'active_player' : game.players[game.active_player] == p}">{{ p }}>, </span></p>
       </div>
     </div>
     <div class="row">

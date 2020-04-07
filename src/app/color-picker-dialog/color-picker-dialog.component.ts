@@ -16,7 +16,7 @@ export class ColorPickerDialogComponent implements OnInit {
   Color = Color;
 
   constructor(
-    private activeModal: NgbActiveModal,
+    public activeModal: NgbActiveModal,
     private formBuilder: FormBuilder,
     private imageService: ImageService,
   ) {
@@ -29,7 +29,7 @@ export class ColorPickerDialogComponent implements OnInit {
     });
   }
 
-  private submitForm() {
+  public submitForm() {
     this.activeModal.close(this.colorPickerFormGroup.value);
   }
 

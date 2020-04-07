@@ -14,7 +14,7 @@ export class GameOverComponent implements OnInit {
   @Input() color: Color;
 
   constructor(
-    private activeModal: NgbActiveModal,
+    public activeModal: NgbActiveModal,
     private imageService: ImageService,
   ) {}
 
