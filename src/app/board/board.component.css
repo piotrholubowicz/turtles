@@ -17,8 +17,16 @@ img.meeple {
   position: absolute;
 }
 
+.card-row {
+  padding-bottom: 10%;
+}
+
 img.movecard {
   width: 10%;
   height: auto;
   position: absolute;
+}
+
+.btn-player {
+  margin: 20px;
 }
