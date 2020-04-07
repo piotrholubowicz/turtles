@@ -4,8 +4,8 @@ import { Card, Color } from './game';
 
 @Injectable()
 export class ImageService {
-  // private PREFIX = '/assets/img';
-  private PREFIX = 'https://raw.githubusercontent.com/piotrholubowicz/turtles/master/src/assets/img';
+  private PREFIX = '/assets/img';
+  // private PREFIX = 'https://raw.githubusercontent.com/piotrholubowicz/turtles/master/src/assets/img';
 
   constructor() {}
 
