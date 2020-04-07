@@ -6,6 +6,16 @@
           "turtles-c2d65"
         ]
       }
+    },
+    "littleturtles": {
+      "hosting": {
+        "turtles": [
+          "littleturtles"
+        ]
+      }
     }
+  },
+  "projects": {
+    "prod": "littleturtles"
   }
 }
