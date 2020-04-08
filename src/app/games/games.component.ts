@@ -11,7 +11,7 @@ import { GameEngine } from '../game-engine';
 @Component({
   selector: 'app-game-list',
   templateUrl: './games.component.html',
-  styleUrls: ['./games.component.css']
+  styleUrls: ['./games.component.css'],
 })
 export class GamesComponent implements OnInit {
   games$: Observable<Game[]>;
@@ -21,7 +21,7 @@ export class GamesComponent implements OnInit {
 
   ngOnInit() {
     this.games$ = this.route.paramMap.pipe(
-      switchMap(params => {
+      switchMap((params) => {
         this.message = params.get('message');
         return this.service.getGames();
       })
@@ -29,11 +29,11 @@ export class GamesComponent implements OnInit {
   }
 
   add(playersInput: string[]): void {
-    const players = playersInput.filter(input => input !== '');
-    if (players.length < 2) {
-      return;
+    const players = playersInput.filter((input) => input !== '').map((input) => input.trim());
+    const game: Game = GameEngine.createGame(players);
+    if (game) {
+      this.service.addGame(game).subscribe();
     }
-    this.service.addGame(GameEngine.createGame(players)).subscribe();
   }
 
   delete(game: Game): void {

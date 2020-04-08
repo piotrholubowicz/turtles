@@ -2,15 +2,23 @@ import { Game, Color, Card, ALL_CARDS } from './game';
 
 export class GameEngine {
   static createGame(players: string[]): Game {
+    if (players.length < 2) {
+      console.log('too few players');
+      return;
+    }
+    if (players.filter((item, index) => players.indexOf(item) !== index).length > 0) {
+      console.log("names can't repeat");
+      return;
+    }
     const turtles = [Color.BLUE, Color.GREEN, Color.PURPLE, Color.RED, Color.YELLOW];
     GameEngine.shuffle(turtles);
     const deck = Array.from(ALL_CARDS.keys()); // shallow copy
     GameEngine.shuffle(deck);
 
     const playersToTurtles: { [id: string]: Color } = {};
-    players.forEach(player => (playersToTurtles[player] = turtles.pop()));
+    players.forEach((player) => (playersToTurtles[player] = turtles.pop()));
     const playersToHands: { [id: string]: number[] } = {};
-    players.forEach(player => (playersToHands[player] = deck.splice(0, 5)));
+    players.forEach((player) => (playersToHands[player] = deck.splice(0, 5)));
 
     return {
       id: undefined,
@@ -22,7 +30,7 @@ export class GameEngine {
       board: [[Color.RED, Color.GREEN, Color.PURPLE, Color.YELLOW, Color.BLUE], [], [], [], [], [], [], [], [], []],
       last_move: undefined,
       active_player: 0,
-      winner: undefined
+      winner: undefined,
     };
   }
 
@@ -43,11 +51,11 @@ export class GameEngine {
       case Color.ANY:
         let colors = [Color.BLUE, Color.GREEN, Color.PURPLE, Color.RED, Color.YELLOW];
         if (ALL_CARDS[cardIdx].distance < 0) {
-          colors = colors.filter(c => game.board[0].indexOf(c) === -1);
+          colors = colors.filter((c) => game.board[0].indexOf(c) === -1);
         }
         return colors;
       case Color.LAST:
-        return [...game.board.find(f => f.length > 0)];
+        return [...game.board.find((f) => f.length > 0)];
     }
     throw new Error(`Unsupported color ${color}`);
   }
@@ -91,7 +99,7 @@ export class GameEngine {
     const player = game.players[game.active_player];
     console.log(player);
     // TODO map vs dict
-    const handIdx = game.hands[player].findIndex(i => i === cardIdx);
+    const handIdx = game.hands[player].findIndex((i) => i === cardIdx);
     if (handIdx === -1) {
       throw new Error(`Invalid move, ${ALL_CARDS[cardIdx]} not found for ${player}`);
     }
@@ -115,7 +123,7 @@ export class GameEngine {
     }
     for (let field = game.board.length - 1; field >= 0; field--) {
       for (const color of game.board[field]) {
-        const player: string = Object.keys(game.colors).find(p => game.colors[p] === color);
+        const player: string = Object.keys(game.colors).find((p) => game.colors[p] === color);
         if (player) {
           game.winner = player;
           console.log(`${player} won!`);
