@@ -26,16 +26,4 @@ export class ImageService {
   getTurtlePath(color: Color): string {
     return `${this.PREFIX}/meeple-${Color[color].toLowerCase()}.png`;
   }
-
-  getTitlePath(): string {
-    return `${this.PREFIX}/title.png`;
-  }
-
-  getYourTurnPath(): string {
-    return `${this.PREFIX}/yourturn.png`;
-  }
-
-  getBoardPath(): string {
-    return `${this.PREFIX}/board.png`;
-  }
 }

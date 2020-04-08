@@ -14,7 +14,7 @@ import { ColorPickerDialogComponent } from '../color-picker-dialog/color-picker-
 @Component({
   selector: 'app-player',
   templateUrl: './player.component.html',
-  styleUrls: ['./player.component.css']
+  styleUrls: ['./player.component.css'],
 })
 export class PlayerComponent implements OnInit {
   game$: Observable<Game>;
@@ -35,7 +35,7 @@ export class PlayerComponent implements OnInit {
       switchMap((params: ParamMap) => {
         this.player = params.get('player');
         return this.service.getGame(+params.get('id')).pipe(
-          catchError(err => {
+          catchError((err) => {
             if (err.status === 404) {
               this.router.navigate(['/games', { message: 'Nie ma takiej gry!' }]);
             }
@@ -54,10 +54,10 @@ export class PlayerComponent implements OnInit {
       this.cantPlayCard();
     } else if (colorOptions.length > 1) {
       this.pickOneColor(colorOptions)
-        .then(result => {
+        .then((result) => {
           this.playTheCard(event.game, event.cardIdx, +result.color);
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     } else {
@@ -86,11 +86,7 @@ export class PlayerComponent implements OnInit {
   showTurtleCard(color: Color) {
     this.turtleCardSrc$ = merge(
       of(this.turtleCardSrc(color)),
-      timer(2000).pipe(switchMap(_ => of(this.turtleCardSrc())))
+      timer(2000).pipe(switchMap((_) => of(this.turtleCardSrc())))
     );
-  }
-
-  yourTurnSrc(): string {
-    return this.imageService.getYourTurnPath();
   }
 }
