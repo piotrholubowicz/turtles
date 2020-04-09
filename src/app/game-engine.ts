@@ -31,6 +31,7 @@ export class GameEngine {
       last_move: undefined,
       active_player: 0,
       winner: undefined,
+      next_game_id: undefined,
     };
   }
 

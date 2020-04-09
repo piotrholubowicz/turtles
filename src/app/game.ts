@@ -5,7 +5,7 @@ export enum Color {
   RED,
   YELLOW,
   LAST,
-  ANY
+  ANY,
 }
 
 export interface Card {
@@ -30,6 +30,7 @@ export interface Game {
   last_move: Move;
   active_player: number;
   winner: string;
+  next_game_id: number;
 }
 
 export const ALL_CARDS = [
@@ -90,5 +91,5 @@ export const ALL_CARDS = [
   { distance: 1, color: Color.LAST },
   { distance: 1, color: Color.LAST },
   { distance: 2, color: Color.LAST },
-  { distance: 2, color: Color.LAST }
+  { distance: 2, color: Color.LAST },
 ];

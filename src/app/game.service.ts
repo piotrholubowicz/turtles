@@ -7,10 +7,10 @@ import { catchError, map, tap, switchMap, distinctUntilChanged, shareReplay } fr
 import { Game, Color } from './game';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GameService {
-  // private gamesUrl = 'https://turtles-server--piotrholubowicz.repl.co/games/';  // URL to web api
+  // private gamesUrl = 'https://turtles-server--piotrholubowicz.repl.co/games/'; // URL to web api
   private gamesUrl = 'https://turtles-server.herokuapp.com/games'; // URL to web api
   private cache: { [url: string]: string } = {}; // url => etag
 
@@ -23,10 +23,10 @@ export class GameService {
     const url = this.gamesUrl;
     delete this.cache[url];
     return timer(0, 1000).pipe(
-      switchMap(_ => this.fetchUrl<Game[]>(url, 'getGames')), // a new http request on every tick
+      switchMap((_) => this.fetchUrl<Game[]>(url, 'getGames')), // a new http request on every tick
       shareReplay({
         bufferSize: 1,
-        refCount: true
+        refCount: true,
       }) // create a new Subject, which will act as a proxy
     );
   }
@@ -36,10 +36,10 @@ export class GameService {
     const url = `${this.gamesUrl}/${id}`;
     delete this.cache[url];
     return timer(0, 1000).pipe(
-      switchMap(_ => this.fetchUrl<Game>(url, `getGame id=${id}`)), // a new http request on every tick
+      switchMap((_) => this.fetchUrl<Game>(url, `getGame id=${id}`)), // a new http request on every tick
       shareReplay({
         bufferSize: 1,
-        refCount: true
+        refCount: true,
       }) // create a new Subject, which will act as a proxy
     );
   }
@@ -49,8 +49,8 @@ export class GameService {
     return this.http
       .get<T>(url, { observe: 'response', headers })
       .pipe(
-        tap(resp => (this.cache[url] = resp.headers.get('Etag'))),
-        map(resp => resp.body),
+        tap((resp) => (this.cache[url] = resp.headers.get('Etag'))),
+        map((resp) => resp.body),
         catchError(this.handleError<T>(operation))
       );
   }
@@ -58,9 +58,10 @@ export class GameService {
   //////// Save methods //////////
 
   /** POST: add a new game to the server */
-  addGame(game: Game): Observable<Game> {
+  addGame(game: Game, currentGame?: Game): Observable<Game> {
+    const url = currentGame ? `${this.gamesUrl}?prevGame=${currentGame.id}` : this.gamesUrl;
     return this.http
-      .post<Game>(this.gamesUrl, game, { headers: this.headers })
+      .post<Game>(url, game, { headers: this.headers })
       .pipe(
         tap((newGame: Game) => console.log(`added game w/ id=${newGame.id}`)),
         tap((g: Game) => console.log(g)),
@@ -76,7 +77,7 @@ export class GameService {
     return this.http
       .delete<Game>(url, { headers: this.headers })
       .pipe(
-        tap(_ => console.log(`deleted game id=${id}`)),
+        tap((_) => console.log(`deleted game id=${id}`)),
         catchError(this.handleError<Game>('deleteHero'))
       );
   }
@@ -86,7 +87,7 @@ export class GameService {
     const url = `${this.gamesUrl}/${game.id}`;
     console.log(game);
     return this.http.put(url, game, { headers: this.headers }).pipe(
-      tap(_ => console.log(`updated game id=${game.id}`)),
+      tap((_) => console.log(`updated game id=${game.id}`)),
       catchError(this.handleError<any>('updateGame'))
     );
   }

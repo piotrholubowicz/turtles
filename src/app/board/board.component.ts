@@ -39,7 +39,7 @@ export class BoardComponent implements OnInit {
                 if (result === 'onemore') {
                   console.log('once more!');
                   this.service
-                    .addGame(GameEngine.createGame(GameEngine.shuffle([...game.players])))
+                    .addGame(GameEngine.createGame(GameEngine.shuffle([...game.players])), game)
                     .subscribe((newGame) => {
                       this.router.navigate(['/board', newGame.id]);
                     });

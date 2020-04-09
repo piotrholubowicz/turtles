@@ -1,5 +1,5 @@
 import { Observable, of, merge, timer } from 'rxjs';
-import { switchMap, catchError } from 'rxjs/operators';
+import { switchMap, catchError, tap } from 'rxjs/operators';
 
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
@@ -35,6 +35,11 @@ export class PlayerComponent implements OnInit {
       switchMap((params: ParamMap) => {
         this.player = params.get('player');
         return this.service.getGame(+params.get('id')).pipe(
+          tap((game) => {
+            if (game.next_game_id) {
+              this.router.navigate(['/hand', game.next_game_id, this.player]);
+            }
+          }),
           catchError((err) => {
             if (err.status === 404) {
               this.router.navigate(['/games', { message: 'Nie ma takiej gry!' }]);
@@ -48,7 +53,7 @@ export class PlayerComponent implements OnInit {
     this.turtleCardSrc$ = of(this.turtleCardSrc());
   }
 
-  onPlayed(event) {
+  onPlayed(event: any) {
     const colorOptions: Color[] = GameEngine.defineColors(event.game, event.cardIdx);
     if (colorOptions.length === 0) {
       this.cantPlayCard();
