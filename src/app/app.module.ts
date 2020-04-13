@@ -29,7 +29,7 @@ import { GameOverComponent } from './game-over/game-over.component';
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
 
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
@@ -46,10 +46,10 @@ import { GameOverComponent } from './game-over/game-over.component';
     CardComponent,
     ColorPickerDialogComponent,
     PageNotFoundComponent,
-    GameOverComponent
+    GameOverComponent,
   ],
   bootstrap: [AppComponent],
-  providers: [{ provide: APP_BASE_HREF, useValue: '/' }, GameService, InMemoryDataService, ImageService],
-  entryComponents: [ColorPickerDialogComponent, GameOverComponent]
+  providers: [{ provide: APP_BASE_HREF, useValue: '/turtles/' }, GameService, InMemoryDataService, ImageService],
+  entryComponents: [ColorPickerDialogComponent, GameOverComponent],
 })
 export class AppModule {}
