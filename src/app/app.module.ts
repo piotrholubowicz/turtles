@@ -49,7 +49,7 @@ import { GameOverComponent } from './game-over/game-over.component';
     GameOverComponent,
   ],
   bootstrap: [AppComponent],
-  providers: [{ provide: APP_BASE_HREF, useValue: '/turtles/' }, GameService, InMemoryDataService, ImageService],
+  providers: [{ provide: APP_BASE_HREF, useValue: '/' }, GameService, InMemoryDataService, ImageService],
   entryComponents: [ColorPickerDialogComponent, GameOverComponent],
 })
 export class AppModule {}

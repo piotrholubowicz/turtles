@@ -9,6 +9,7 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "i18n": { "sourceLocale": "pl", "locales": { "en": "src/locale/messages.en.xlf" } },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -19,14 +20,10 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
-            "scripts": []
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.css"],
+            "scripts": [],
+            "localize": true
           },
           "configurations": {
             "production": {
@@ -56,6 +53,14 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "en": {
+              "localize": ["en"],
+              "baseHref": "/en/"
+            },
+            "pl": {
+              "localize": ["pl"],
+              "baseHref": "/pl/"
             }
           }
         },
@@ -67,7 +72,9 @@
           "configurations": {
             "production": {
               "browserTarget": "turtles:build:production"
-            }
+            },
+            "en": { "browserTarget": "turtles:build:en" },
+            "pl": { "browserTarget": "turtles:build:pl" }
           }
         },
         "extract-i18n": {
@@ -83,27 +90,16 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.css"],
             "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["tsconfig.app.json", "tsconfig.spec.json", "e2e/tsconfig.json"],
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {

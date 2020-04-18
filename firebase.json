@@ -2,7 +2,7 @@
   "hosting": [
     {
       "target": "turtles",
-      "public": "dist/turtles",
+      "public": "dist/turtles/pl",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
         {

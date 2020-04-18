@@ -11,11 +11,11 @@ const routes: Routes = [
   { path: 'games', component: GamesComponent },
   { path: 'board/:id', component: BoardComponent },
   { path: 'hand/:id/:player', component: PlayerComponent },
-  { path: '**', component: PageNotFoundComponent }
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}
