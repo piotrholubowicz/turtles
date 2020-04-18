@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+<xliff version="1.2" 
+  xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="pl" datatype="plaintext" original="ng2.template">
     <body>
       <trans-unit id="ngb.alert.close" datatype="html">
@@ -124,7 +125,9 @@
         </context-group>
       </trans-unit>
       <trans-unit id="ngb.progressbar.value" datatype="html">
-        <source><x id="INTERPOLATION" equiv-text="{{getPercentValue()}}"/>%</source>
+        <source>
+          <x id="INTERPOLATION" equiv-text="{{getPercentValue()}}"/>
+%</source>
         <context-group purpose="location">
           <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/progressbar/progressbar.d.ts</context>
           <context context-type="linenumber">7</context>
@@ -215,14 +218,18 @@
         </context-group>
       </trans-unit>
       <trans-unit id="ngb.timepicker.PM" datatype="html">
-        <source><x id="INTERPOLATION" equiv-text="{{ i18n.getAfternoonPeriod() }}"/></source>
+        <source>
+          <x id="INTERPOLATION" equiv-text="{{ i18n.getAfternoonPeriod() }}"/>
+        </source>
         <context-group purpose="location">
           <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
           <context context-type="linenumber">76</context>
         </context-group>
       </trans-unit>
       <trans-unit id="ngb.timepicker.AM" datatype="html">
-        <source><x id="INTERPOLATION" equiv-text="{{ i18n.getMorningPeriod() }}"/></source>
+        <source>
+          <x id="INTERPOLATION" equiv-text="{{ i18n.getMorningPeriod() }}"/>
+        </source>
         <context-group purpose="location">
           <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
           <context context-type="linenumber">77</context>
@@ -269,18 +276,30 @@
           <context context-type="sourcefile">src/app/games/games.component.html</context>
           <context context-type="linenumber">44</context>
         </context-group>
+      </trans-unit>
+      <trans-unit id="player2" datatype="html">
+        <source>Gracz 2</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/games/games.component.html</context>
           <context context-type="linenumber">50</context>
         </context-group>
+      </trans-unit>
+      <trans-unit id="player3" datatype="html">
+        <source>Gracz 3</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/games/games.component.html</context>
           <context context-type="linenumber">56</context>
         </context-group>
+      </trans-unit>
+      <trans-unit id="player4" datatype="html">
+        <source>Gracz 4</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/games/games.component.html</context>
           <context context-type="linenumber">62</context>
         </context-group>
+      </trans-unit>
+      <trans-unit id="player5" datatype="html">
+        <source>Gracz 5</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/games/games.component.html</context>
           <context context-type="linenumber">68</context>
@@ -289,7 +308,7 @@
       <trans-unit id="newGameButton" datatype="html">
         <source>
             Nowa gra
-          </source>
+        </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/games/games.component.html</context>
           <context context-type="linenumber">87</context>
@@ -312,7 +331,7 @@
       <trans-unit id="rulesObjective" datatype="html">
         <source>
         Zadaniem każdego gracza jest doprowadzenie swojego żółwia jako pierwszego do grządki sałaty.
-      </source>
+        </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/games/games.component.html</context>
           <context context-type="linenumber">98</context>
@@ -329,7 +348,7 @@
         <source>
         Gracz decyduje, którą z pięciu trzymanych w ręku kart wyłoży na stół. Karta te przesuwa żółwie zgodnie ze
         znajdującymi się na niej oznaczeniem:
-      </source>
+        </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/games/games.component.html</context>
           <context context-type="linenumber">102</context>
@@ -381,7 +400,7 @@
         <source>
         Jeśli żółw wejdzie na pole, na którym znajduje się inny żółw, wchodzi na niego. Przemieszczający się żółw
         zabiera ze sobą wszystkie żółwie znajdujące się na jego skorupie.
-      </source>
+        </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/games/games.component.html</context>
           <context context-type="linenumber">120</context>
@@ -398,7 +417,7 @@
         <source>
         Wyścig kończy się, gdy którykolwiek z żółwi znajdzie się na ostatnim polu. Wygrywa gracz, którego żółw znajduje
         się najbliżej ostatniego pola. Jeżeli kilka żółwi znajduje się jeden na drugim, wygrywa ten będący najniżej.
-      </source>
+        </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/games/games.component.html</context>
           <context context-type="linenumber">125</context>
@@ -412,7 +431,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="winner" datatype="html">
-        <source>Wygrał <x id="INTERPOLATION" equiv-text="{{ winner }}"/>!</source>
+        <source>Wygrał</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/game-over/game-over.component.html</context>
           <context context-type="linenumber">12</context>
@@ -421,7 +440,7 @@
       <trans-unit id="oneMore" datatype="html">
         <source>
       Jeszcze raz!
-    </source>
+        </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/game-over/game-over.component.html</context>
           <context context-type="linenumber">25</context>
@@ -465,7 +484,7 @@
       <trans-unit id="nothingHere" datatype="html">
         <source>
       Ups, nic tu nie ma!
-    </source>
+        </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/page-not-found/page-not-found.component.html</context>
           <context context-type="linenumber">8</context>

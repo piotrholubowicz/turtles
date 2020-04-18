@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+<xliff version="1.2" 
+  xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="pl" datatype="plaintext" original="ng2.template">
     <body>
       <trans-unit id="ngb.alert.close" datatype="html">
@@ -124,7 +125,9 @@
         </context-group>
       </trans-unit>
       <trans-unit id="ngb.progressbar.value" datatype="html">
-        <source><x id="INTERPOLATION" equiv-text="{{getPercentValue()}}"/>%</source>
+        <source>
+          <x id="INTERPOLATION" equiv-text="{{getPercentValue()}}"/>
+%</source>
         <context-group purpose="location">
           <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/progressbar/progressbar.d.ts</context>
           <context context-type="linenumber">7</context>
@@ -215,14 +218,18 @@
         </context-group>
       </trans-unit>
       <trans-unit id="ngb.timepicker.PM" datatype="html">
-        <source><x id="INTERPOLATION" equiv-text="{{ i18n.getAfternoonPeriod() }}"/></source>
+        <source>
+          <x id="INTERPOLATION" equiv-text="{{ i18n.getAfternoonPeriod() }}"/>
+        </source>
         <context-group purpose="location">
           <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
           <context context-type="linenumber">76</context>
         </context-group>
       </trans-unit>
       <trans-unit id="ngb.timepicker.AM" datatype="html">
-        <source><x id="INTERPOLATION" equiv-text="{{ i18n.getMorningPeriod() }}"/></source>
+        <source>
+          <x id="INTERPOLATION" equiv-text="{{ i18n.getMorningPeriod() }}"/>
+        </source>
         <context-group purpose="location">
           <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
           <context context-type="linenumber">77</context>
@@ -237,6 +244,7 @@
       </trans-unit>
       <trans-unit id="chooseGameOrCreateOne" datatype="html">
         <source>Wybierz istniejącą grę lub stwórz nową.</source>
+        <target>Choose an existing game or create a new one.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/games/games.component.html</context>
           <context context-type="linenumber">10</context>
@@ -244,6 +252,7 @@
       </trans-unit>
       <trans-unit id="existingGames" datatype="html">
         <source>Istniejące gry</source>
+        <target>Existing games</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/games/games.component.html</context>
           <context context-type="linenumber">17</context>
@@ -251,6 +260,7 @@
       </trans-unit>
       <trans-unit id="noGames" datatype="html">
         <source>Nie ma gier.</source>
+        <target>No existing games.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/games/games.component.html</context>
           <context context-type="linenumber">35</context>
@@ -258,6 +268,7 @@
       </trans-unit>
       <trans-unit id="newGame" datatype="html">
         <source>Nowa gra</source>
+        <target>Create a game</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/games/games.component.html</context>
           <context context-type="linenumber">41</context>
@@ -265,22 +276,39 @@
       </trans-unit>
       <trans-unit id="player1" datatype="html">
         <source>Gracz 1</source>
+        <target>Player 1</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/games/games.component.html</context>
           <context context-type="linenumber">44</context>
         </context-group>
+      </trans-unit>
+      <trans-unit id="player2" datatype="html">
+        <source>Gracz 2</source>
+        <target>Player 2</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/games/games.component.html</context>
           <context context-type="linenumber">50</context>
         </context-group>
+      </trans-unit>
+      <trans-unit id="player3" datatype="html">
+        <source>Gracz 3</source>
+        <target>Player 3</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/games/games.component.html</context>
           <context context-type="linenumber">56</context>
         </context-group>
+      </trans-unit>
+      <trans-unit id="player4" datatype="html">
+        <source>Gracz 4</source>
+        <target>Player 4</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/games/games.component.html</context>
           <context context-type="linenumber">62</context>
         </context-group>
+      </trans-unit>
+      <trans-unit id="player5" datatype="html">
+        <source>Gracz 5</source>
+        <target>Player 5</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/games/games.component.html</context>
           <context context-type="linenumber">68</context>
@@ -289,7 +317,8 @@
       <trans-unit id="newGameButton" datatype="html">
         <source>
             Nowa gra
-          </source>
+        </source>
+        <target>Create a game</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/games/games.component.html</context>
           <context context-type="linenumber">87</context>
@@ -297,6 +326,7 @@
       </trans-unit>
       <trans-unit id="rules" datatype="html">
         <source>Reguły</source>
+        <target>Rules</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/games/games.component.html</context>
           <context context-type="linenumber">96</context>
@@ -304,6 +334,7 @@
       </trans-unit>
       <trans-unit id="rulesObjectiveHeader" datatype="html">
         <source>Cel gry</source>
+        <target>Objective</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/games/games.component.html</context>
           <context context-type="linenumber">97</context>
@@ -312,7 +343,8 @@
       <trans-unit id="rulesObjective" datatype="html">
         <source>
         Zadaniem każdego gracza jest doprowadzenie swojego żółwia jako pierwszego do grządki sałaty.
-      </source>
+        </source>
+        <target>The goal of each player is getting their turtle to the lettuce patch.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/games/games.component.html</context>
           <context context-type="linenumber">98</context>
@@ -320,6 +352,7 @@
       </trans-unit>
       <trans-unit id="rulesFlowHeader" datatype="html">
         <source>Przebieg gry</source>
+        <target>How to play.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/games/games.component.html</context>
           <context context-type="linenumber">101</context>
@@ -329,7 +362,11 @@
         <source>
         Gracz decyduje, którą z pięciu trzymanych w ręku kart wyłoży na stół. Karta te przesuwa żółwie zgodnie ze
         znajdującymi się na niej oznaczeniem:
-      </source>
+        </source>
+        <target>
+        A player decided which of the five cards in their hand they will play. The card moves the turtles according to
+        the symbols on it:
+        </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/games/games.component.html</context>
           <context context-type="linenumber">102</context>
@@ -337,6 +374,7 @@
       </trans-unit>
       <trans-unit id="card1" datatype="html">
         <source>żółw w kolorze przedstawionym na karcie porusza się o 2 pola do przodu</source>
+        <target>the turtle whose color is depicted on the card moves 2 spaces forward</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/games/games.component.html</context>
           <context context-type="linenumber">108</context>
@@ -344,6 +382,7 @@
       </trans-unit>
       <trans-unit id="card2" datatype="html">
         <source>żółw w kolorze przedstawionym na karcie porusza się o 1 pole do przodu</source>
+        <target>the turtle whose color is depicted on the card moves 1 space forward</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/games/games.component.html</context>
           <context context-type="linenumber">111</context>
@@ -351,6 +390,7 @@
       </trans-unit>
       <trans-unit id="card3" datatype="html">
         <source>żółw w kolorze przedstawionym na karcie porusza się o 1 pole do tyłu</source>
+        <target>the turtle whose color is depicted on the card moves 1 space back</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/games/games.component.html</context>
           <context context-type="linenumber">114</context>
@@ -358,6 +398,7 @@
       </trans-unit>
       <trans-unit id="card4" datatype="html">
         <source>ostatni żółw porusza się o 2 pola do przodu</source>
+        <target>the last turtle moves 2 spaces forward</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/games/games.component.html</context>
           <context context-type="linenumber">116</context>
@@ -365,6 +406,7 @@
       </trans-unit>
       <trans-unit id="card5" datatype="html">
         <source>ostatni żółw porusza się o 1 pole do przodu</source>
+        <target>the last turtle moves 1 space forward</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/games/games.component.html</context>
           <context context-type="linenumber">117</context>
@@ -372,6 +414,7 @@
       </trans-unit>
       <trans-unit id="rulesAllColors" datatype="html">
         <source>Podczas gry gracz może przesuwać żółwie w każdym kolorze, nie tylko swój.</source>
+        <target>During the game a player can move turtles of any color, not just their own.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/games/games.component.html</context>
           <context context-type="linenumber">119</context>
@@ -381,7 +424,11 @@
         <source>
         Jeśli żółw wejdzie na pole, na którym znajduje się inny żółw, wchodzi na niego. Przemieszczający się żółw
         zabiera ze sobą wszystkie żółwie znajdujące się na jego skorupie.
-      </source>
+        </source>
+        <target>
+        If a turtle moves to a space occupied by another turtle, it climbs on their back. A moving turtle carries
+        with it all turtles resting on its back.
+        </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/games/games.component.html</context>
           <context context-type="linenumber">120</context>
@@ -389,6 +436,7 @@
       </trans-unit>
       <trans-unit id="rulesEndHeader" datatype="html">
         <source>Koniec gry</source>
+        <target>How the game ends</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/games/games.component.html</context>
           <context context-type="linenumber">124</context>
@@ -398,7 +446,12 @@
         <source>
         Wyścig kończy się, gdy którykolwiek z żółwi znajdzie się na ostatnim polu. Wygrywa gracz, którego żółw znajduje
         się najbliżej ostatniego pola. Jeżeli kilka żółwi znajduje się jeden na drugim, wygrywa ten będący najniżej.
-      </source>
+        </source>
+        <target>
+        The game ends when a turtle lands on the last space. The winner is the player whose turtle is closest to the
+        last space. If multiple turtles share the same space, the winner is the turtle closest to the bottom of the
+        stack.
+        </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/games/games.component.html</context>
           <context context-type="linenumber">125</context>
@@ -406,22 +459,23 @@
       </trans-unit>
       <trans-unit id="gameOver" datatype="html">
         <source>Koniec gry</source>
+        <target>Game over</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/game-over/game-over.component.html</context>
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
       <trans-unit id="winner" datatype="html">
-        <source>Wygrał <x id="INTERPOLATION" equiv-text="{{ winner }}"/>!</source>
+        <source>Wygrał</source>
+        <target>The winner is</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/game-over/game-over.component.html</context>
           <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
       <trans-unit id="oneMore" datatype="html">
-        <source>
-      Jeszcze raz!
-    </source>
+        <source>Jeszcze raz!</source>
+        <target>One more time!</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/game-over/game-over.component.html</context>
           <context context-type="linenumber">25</context>
@@ -429,6 +483,7 @@
       </trans-unit>
       <trans-unit id="clickYourName" datatype="html">
         <source>Kliknij na swoje imię, aby zobaczyć swoje karty:</source>
+        <target>Click on your name to see your hand:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/board/board.component.html</context>
           <context context-type="linenumber">51</context>
@@ -436,6 +491,7 @@
       </trans-unit>
       <trans-unit id="chooseTurtle" datatype="html">
         <source>Wybierz żółwia</source>
+        <target>Choose a turtle</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/color-picker-dialog/color-picker-dialog.component.html</context>
           <context context-type="linenumber">2</context>
@@ -443,6 +499,7 @@
       </trans-unit>
       <trans-unit id="whichTurtle" datatype="html">
         <source>Którego żółwia chcesz przesunąć?</source>
+        <target>Which turtle do you want to move?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/color-picker-dialog/color-picker-dialog.component.html</context>
           <context context-type="linenumber">11</context>
@@ -450,6 +507,7 @@
       </trans-unit>
       <trans-unit id="you" datatype="html">
         <source> (Ty)</source>
+        <target> (You)</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/player/player.component.html</context>
           <context context-type="linenumber">14</context>
@@ -457,15 +515,15 @@
       </trans-unit>
       <trans-unit id="clickMe" datatype="html">
         <source>Kliknij mnie</source>
+        <target>Click me</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/player/player.component.html</context>
           <context context-type="linenumber">36</context>
         </context-group>
       </trans-unit>
       <trans-unit id="nothingHere" datatype="html">
-        <source>
-      Ups, nic tu nie ma!
-    </source>
+        <source>Ups, nic tu nie ma!</source>
+        <target>Oops, nothing to see here!</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/page-not-found/page-not-found.component.html</context>
           <context context-type="linenumber">8</context>
