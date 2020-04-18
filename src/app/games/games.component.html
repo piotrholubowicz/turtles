@@ -1,17 +1,27 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <a href="/"><img src="/assets/img/title.png"/></a>
+      <a href="/"><img src="/assets/img/title.png" /></a>
     </div>
   </div>
 
+  <div class="row">
+    <div class="col">
+      <p>Wybierz istniejącą grę lub stwórz nową.</p>
+    </div>
+  </div>
   <div class="row">
     <div class="col-6">
       <div class="row">
         <div class="col-10">
           <h2>Istniejące gry</h2>
           <div *ngIf="(games$ | async)?.length > 0; else noGames">
-            <div *ngFor="let game of games$ | async" class="btn-group" role="group" style="width: 100%; margin-top:5%;">
+            <div
+              *ngFor="let game of games$ | async"
+              class="btn-group"
+              role="group"
+              style="width: 100%; margin-top: 5%;"
+            >
               <div class="input-group-prepend">
                 <div class="input-group-text">{{ game.id }}</div>
               </div>
