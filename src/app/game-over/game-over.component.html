@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <h4 class="modal-title">Koniec gry</h4>
+  <h4 class="modal-title" i18n="@@gameOver">Koniec gry</h4>
   <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -9,7 +9,7 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        <p>Wygrał {{ winner }}!</p>
+        <p i18n="@@winner">Wygrał {{ winner }}!</p>
       </div>
     </div>
     <div class="row">
@@ -22,7 +22,7 @@
   </div>
 
   <div class="modal-footer">
-    <button class="btn btn-secondary" (click)="activeModal.close('onemore')">
+    <button class="btn btn-secondary" (click)="activeModal.close('onemore')" i18n="@@oneMore">
       Jeszcze raz!
     </button>
     <button class="btn btn-primary" (click)="activeModal.close('OK')">

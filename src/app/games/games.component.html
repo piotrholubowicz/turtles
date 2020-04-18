@@ -7,14 +7,14 @@
 
   <div class="row">
     <div class="col">
-      <p>Wybierz istniejącą grę lub stwórz nową.</p>
+      <p i18n="@@chooseGameOrCreateOne">Wybierz istniejącą grę lub stwórz nową.</p>
     </div>
   </div>
   <div class="row">
     <div class="col-6">
       <div class="row">
         <div class="col-10">
-          <h2>Istniejące gry</h2>
+          <h2 i18n="@@existingGames">Istniejące gry</h2>
           <div *ngIf="(games$ | async)?.length > 0; else noGames">
             <div
               *ngFor="let game of games$ | async"
@@ -32,40 +32,40 @@
             </div>
           </div>
           <ng-template #noGames>
-            <p>Nie ma gier.</p>
+            <p i18n="@@noGames">Nie ma gier.</p>
           </ng-template>
         </div>
       </div>
     </div>
     <div class="col-6">
-      <h2>Nowa gra</h2>
+      <h2 i18n="@@newGame">Nowa gra</h2>
       <form>
         <div class="form-group row">
-          <label class="col-2 col-form-label">Gracz 1</label>
+          <label class="col-2 col-form-label" i18n="@@player1">Gracz 1</label>
           <div class="col-10">
             <input class="form-control" #player1 />
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-2 col-form-label">Gracz 2</label>
+          <label class="col-2 col-form-label" i18n="@@player1">Gracz 2</label>
           <div class="col-10">
             <input class="form-control" #player2 />
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-2 col-form-label">Gracz 3</label>
+          <label class="col-2 col-form-label" i18n="@@player1">Gracz 3</label>
           <div class="col-10">
             <input class="form-control" #player3 />
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-2 col-form-label">Gracz 4</label>
+          <label class="col-2 col-form-label" i18n="@@player1">Gracz 4</label>
           <div class="col-10">
             <input class="form-control" #player4 />
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-2 col-form-label">Gracz 5</label>
+          <label class="col-2 col-form-label" i18n="@@player1">Gracz 5</label>
           <div class="col-10">
             <input class="form-control" #player5 />
           </div>
@@ -83,6 +83,7 @@
               player4.value = '';
               player5.value = ''
             "
+            i18n="@@newGameButton"
           >
             Nowa gra
           </button>
@@ -92,28 +93,36 @@
   </div>
   <div class="row">
     <div class="col">
-      <h2>Reguły</h2>
-      <h4>Cel gry</h4>
-      <p>Zadaniem każdego gracza jest doprowadzenie swojego żółwia jako pierwszego do grządki sałaty.</p>
-      <h4>Przebieg gry</h4>
-      <p>
+      <h2 i18n="@@rules">Reguły</h2>
+      <h4 i18n="@@rulesObjectiveHeader">Cel gry</h4>
+      <p i18n="@@rulesObjective">
+        Zadaniem każdego gracza jest doprowadzenie swojego żółwia jako pierwszego do grządki sałaty.
+      </p>
+      <h4 i18n="@@rulesFlowHeader">Przebieg gry</h4>
+      <p i18n="@@rulesFlow">
         Gracz decyduje, którą z pięciu trzymanych w ręku kart wyłoży na stół. Karta te przesuwa żółwie zgodnie ze
         znajdującymi się na niej oznaczeniem:
       </p>
       <ul>
-        <li><b>++</b> - żółw w kolorze przedstawionym na karcie porusza się o 2 pola do przodu</li>
-        <li><b>+</b> - żółw w kolorze przedstawionym na karcie porusza się o 1 pole do przodu</li>
-        <li><b>-</b> - żółw w kolorze przedstawionym na karcie porusza się o 1 pole do tyłu</li>
-        <li><b>^^</b> - ostatni żółw porusza się o 2 pola do przodu</li>
-        <li><b>^</b> - ostatni żółw porusza się o 1 pole do przodu</li>
+        <li>
+          <b>++</b> - <span i18n="@@card1">żółw w kolorze przedstawionym na karcie porusza się o 2 pola do przodu</span>
+        </li>
+        <li>
+          <b>+</b> - <span i18n="@@card2">żółw w kolorze przedstawionym na karcie porusza się o 1 pole do przodu</span>
+        </li>
+        <li>
+          <b>-</b> - <span i18n="@@card3">żółw w kolorze przedstawionym na karcie porusza się o 1 pole do tyłu</span>
+        </li>
+        <li><b>^^</b> - <span i18n="@@card4">ostatni żółw porusza się o 2 pola do przodu</span></li>
+        <li><b>^</b> - <span i18n="@@card5">ostatni żółw porusza się o 1 pole do przodu</span></li>
       </ul>
-      <p>Podczas gry gracz może przesuwać żółwie w każdym kolorze, nie tylko swój.</p>
-      <p>
+      <p i18n="@@rulesAllColors">Podczas gry gracz może przesuwać żółwie w każdym kolorze, nie tylko swój.</p>
+      <p i18n="@@rulesStacking">
         Jeśli żółw wejdzie na pole, na którym znajduje się inny żółw, wchodzi na niego. Przemieszczający się żółw
         zabiera ze sobą wszystkie żółwie znajdujące się na jego skorupie.
       </p>
-      <h4>Koniec gry</h4>
-      <p>
+      <h4 i18n="@@rulesEndHeader">Koniec gry</h4>
+      <p i18n="@@rulesEnd">
         Wyścig kończy się, gdy którykolwiek z żółwi znajdzie się na ostatnim polu. Wygrywa gracz, którego żółw znajduje
         się najbliżej ostatniego pola. Jeżeli kilka żółwi znajduje się jeden na drugim, wygrywa ten będący najniżej.
       </p>

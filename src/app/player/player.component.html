@@ -11,7 +11,7 @@
           <div class="col">
             <p class="players">
               <span *ngFor="let p of game.players" [ngClass]="{ active_player: game.players[game.active_player] == p }"
-                >{{ p }}<span *ngIf="player == p"> (Ty)</span>,
+                >{{ p }}<span *ngIf="player == p" i18n="@@you"> (Ty)</span>,
               </span>
             </p>
           </div>
@@ -33,7 +33,7 @@
       </div>
       <div class="col-2">
         <img src="{{ turtleCardSrc$ | async }}" (click)="showTurtleCard(game.colors[player])" class="turtlecard" />
-        <p class="turtlecard">Kliknij mnie</p>
+        <p class="turtlecard" i18n="@@clickMe">Kliknij mnie</p>
       </div>
     </div>
     <div class="row">

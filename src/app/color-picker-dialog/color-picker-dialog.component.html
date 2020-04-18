@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <h4 class="modal-title">Wybierz żółwia</h4>
+  <h4 class="modal-title" i18n="@@chooseTurtle">Wybierz żółwia</h4>
   <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -8,7 +8,7 @@
 <form [formGroup]="colorPickerFormGroup" (ngSubmit)="submitForm()">
   <div class="modal-body">
     <div class="container">
-      <p>Którego żółwia chcesz przesunąć?</p>
+      <p i18n="@@whichTurtle">Którego żółwia chcesz przesunąć?</p>
       <div class="form-row">
         <div *ngFor="let color of colors" class="col">
           <input
