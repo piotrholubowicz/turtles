@@ -1,10 +1,29 @@
 {
   "hosting": [
     {
-      "target": "turtles",
-      "public": "dist/turtles/pl",
+      "target": "turtles-pl",
+      "public": "dist/pl",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
+        {
+          "source": "/pl/:res*",
+          "destination": "/:res"
+        },
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    },
+    {
+      "target": "turtles-en",
+      "public": "dist/en",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "/en/:res*",
+          "destination": "/:res"
+        },
         {
           "source": "**",
           "destination": "/index.html"

@@ -2,8 +2,11 @@
   "targets": {
     "littleturtles": {
       "hosting": {
-        "turtles": [
+        "turtles-pl": [
           "littleturtles"
+        ],
+        "turtles-en": [
+          "littleturtles-en"
         ]
       }
     }
