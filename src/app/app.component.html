@@ -1,5 +1,11 @@
+<ng-container *ngFor="let language of languageList">
+  <a href="/{{ language.code }}/">
+    <button class="button">{{ language.label }}</button>
+  </a></ng-container
+>
+
 <router-outlet></router-outlet>
 
-<a href="http://www.freepik.com" style="color: #eeeeee; font-size: 8pt; float: right"
+<a href="http://www.freepik.com" style="color: #eeeeee; font-size: 8pt; float: right;"
   >Designed by rawpixel.com / Freepik</a
 >
